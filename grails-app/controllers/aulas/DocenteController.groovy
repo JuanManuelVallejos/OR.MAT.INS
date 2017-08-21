@@ -19,6 +19,12 @@ class DocenteController {
         //render ([view: 'create', model:[docenteInstance: docente]])
     }
 
+    def edit() {
+        Docente docente = Docente.get(params.id)
+        List<Docente> listaDocentes = Docente.getAll()
+        render ([view: 'create', model:[docenteInstance: docente, docenteList: Docente.all]])
+    }
+
     def save(Docente docenteInstance) {
         if (docenteInstance.hasErrors()) {
             respond docenteInstance.errors, view:'create'
@@ -33,13 +39,14 @@ class DocenteController {
         [docenteInstance: docente]
     }
 
-    def list(input) {
-        System.out.println("adasdsadasdaaaaaaaaaaaa "+input)
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        def docenteBusqueda = docenteService.buscar(input)
-        render ([view: 'index', model:[docenteList: docenteBusqueda]])
-        //[docenteList: docenteBusqueda, inputBusqueda: params.inputBusqueda]
-    }
+    def update(Docente docenteInstance) {
 
+        if (docenteInstance.hasErrors()) {
+            respond docenteInstance.errors, view: 'edit'
+            return
+        }
+
+        docenteInstance.save flush: true
+    }
 
 }
