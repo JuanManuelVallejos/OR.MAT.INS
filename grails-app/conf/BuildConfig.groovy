@@ -85,5 +85,8 @@ grails.project.dependency.resolution = {
 
         //Migrations
         compile ":database-migration:1.4.1"
+
+        //Bootstrap
+        compile "org.grails.plugins:twitter-bootstrap:3.3.4"
     }
 }

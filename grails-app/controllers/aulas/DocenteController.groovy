@@ -1,16 +1,30 @@
 package aulas
 
-import grails.plugin.springsecurity.annotation.Secured
 
 class DocenteController {
 
-    @Secured('ROLE_USER')
-    def index() {
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def docenteService
 
-        def announcements = Docente.createCriteria().list {
-            order("dateCreated", "desc")
-            maxResults(1)
+    def index() {
+        [docenteList: Docente.all]
+    }
+
+    def list(){
+        [docenteList: Docente.all]
+    }
+
+    def create() {
+        Docente docente = new Docente()
+        [docenteInstance: docente]
+        //render ([view: 'create', model:[docenteInstance: docente]])
+    }
+
+    def save(Docente docenteInstance) {
+        if (docenteInstance.hasErrors()) {
+            respond docenteInstance.errors, view:'create'
+            return
         }
-        render announcements.first()?.message
+        docenteInstance.save flush:true
     }
 }
