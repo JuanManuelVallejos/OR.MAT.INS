@@ -11,6 +11,7 @@
           <root url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.8/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-2.0.0/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.1/grails-app/views" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/twitter-bootstrap-3.3.4/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -65,6 +66,10 @@
     <content url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.54">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.54/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.54/src/groovy" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/twitter-bootstrap-3.3.4">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/twitter-bootstrap-3.3.4/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/twitter-bootstrap-3.3.4/grails-app/taglib" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1/src/groovy" isTestSource="false" />

@@ -9,8 +9,9 @@ class Docente {
     Integer edad
 
     static constraints = {
-        nombre(size:1..30)
-        apellido(size:1..30)
-        edad(max: 99)
+        nombre size:1..30
+        apellido size:1..30
+        edad max: 99
+        email email: true
     }
 }

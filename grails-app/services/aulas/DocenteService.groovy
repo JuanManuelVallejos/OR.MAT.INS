@@ -10,4 +10,9 @@ class DocenteService {
         return Docente.get(id)
     }
 
+    def buscar(inputBusqueda) {
+        def likeBusqueda = "%" + inputBusqueda + "%"
+        return Docente.findAllByNombreLike(likeBusqueda,likeBusqueda)
+    }
+
 }
