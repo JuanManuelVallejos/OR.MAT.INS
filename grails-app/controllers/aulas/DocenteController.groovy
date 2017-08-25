@@ -1,5 +1,9 @@
 package aulas
 
+import grails.converters.JSON
+
+import javax.swing.text.html.HTML
+
 
 class DocenteController {
 
@@ -7,22 +11,17 @@ class DocenteController {
     def docenteService
 
     def index() {
-        if(params.inputBusqueda? params.inputBusqueda == null : true)
-            [docenteList: Docente.all]
-        else
-            [docenteList: docenteService.buscar(params.inputBusqueda)]
+        [docenteList: Docente.all]
     }
 
     def create() {
         Docente docente = new Docente()
         [docenteInstance: docente]
-        //render ([view: 'create', model:[docenteInstance: docente]])
     }
 
     def edit() {
         Docente docente = Docente.get(params.id)
-        List<Docente> listaDocentes = Docente.getAll()
-        render ([view: 'create', model:[docenteInstance: docente, docenteList: Docente.all]])
+        [docenteInstance: docente]
     }
 
     def save(Docente docenteInstance) {
@@ -47,6 +46,17 @@ class DocenteController {
         }
 
         docenteInstance.save flush: true
+
+        render ([view: 'index', model:[docenteList: docenteService.findAll()]])
+    }
+
+    def buscarDocentePorNombre() {
+        def docentes = docenteService.buscar(request.JSON.nombre)
+        def responseData = [
+                'docenteList': docentes,
+                'status': docentes ? "OK" : "Nothing present"
+        ]
+        render(template: 'tabla', model: [docentes: docentes])//responseData as JSON
     }
 
 }

@@ -126,7 +126,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.aulas.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.aulas.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.aulas.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                ['permitAll'],
+	'/**':                ['permitAll'],
 	'/index':           ['permitAll'],
 	'/index.gsp':       ['permitAll'],
     '/docente/**':       ['permitAll'],

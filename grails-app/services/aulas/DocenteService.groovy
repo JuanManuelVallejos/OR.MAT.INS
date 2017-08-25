@@ -1,8 +1,5 @@
 package aulas
 
-import grails.transaction.Transactional
-
-@Transactional
 class DocenteService {
 
 
