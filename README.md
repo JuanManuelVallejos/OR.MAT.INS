@@ -14,4 +14,4 @@ Las ventajas que genera tener esta aplicación para el cuerpo administrativo es 
 
 ## Casos de uso
 
-+ [Casos de uso] (https://github.com/JuanManuelVallejos/OR.MAT.INS/wiki/7.-Casos-de-uso)
++ [Casos de uso](https://github.com/JuanManuelVallejos/OR.MAT.INS/wiki/7.-Casos-de-uso)
