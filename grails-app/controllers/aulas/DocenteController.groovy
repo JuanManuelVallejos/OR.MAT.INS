@@ -1,17 +1,12 @@
 package aulas
 
-import grails.converters.JSON
-
-import javax.swing.text.html.HTML
-
-
 class DocenteController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
     def docenteService
 
     def index() {
-        [docenteList: Docente.all]
+        [docenteList: docenteService.getAllDocentes()]
     }
 
     def create() {
@@ -20,22 +15,18 @@ class DocenteController {
     }
 
     def edit() {
-        Docente docente = Docente.get(params.id)
+        Docente docente = docenteService.getDocenteById(params.id)
         [docenteInstance: docente]
     }
 
     def save(Docente docenteInstance) {
+
         if (docenteInstance.hasErrors()) {
             respond docenteInstance.errors, view:'create'
             return
         }
-        docenteInstance.save flush:true
+        docenteService.saveDocente(docenteInstance)
         redirect docenteInstance: docenteInstance
-    }
-
-    def show(long id) {
-        def docente = docenteService.getDocente(id)
-        [docenteInstance: docente]
     }
 
     def update(Docente docenteInstance) {
@@ -45,18 +36,14 @@ class DocenteController {
             return
         }
 
-        docenteInstance.save flush: true
+        docenteService.saveDocente(docenteInstance)
 
-        render ([view: 'index', model:[docenteList: docenteService.findAll()]])
+        render ([view: 'index', model:[docenteList: docenteService.getAllDocentes()]])
     }
 
     def buscarDocentePorNombre() {
         def docentes = docenteService.buscar(request.JSON.nombre)
-        def responseData = [
-                'docenteList': docentes,
-                'status': docentes ? "OK" : "Nothing present"
-        ]
-        render(template: 'tabla', model: [docentes: docentes])//responseData as JSON
+        render(template: 'tabla', model: [docentes: docentes])
     }
 
 }

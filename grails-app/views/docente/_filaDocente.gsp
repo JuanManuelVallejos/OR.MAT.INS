@@ -17,4 +17,7 @@
     <td>
         <label id="edad">${docente.edad}</label>
     </td>
+    <td>
+        <label id="dni">${docente.dni}</label>
+    </td>
 </tr>

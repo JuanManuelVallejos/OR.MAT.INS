@@ -50,6 +50,13 @@
 						<g:textField name="edad" class="form-control" disabled="${!modoEdicion}" placeholder="edad" aria-describedby="basic-addon1" required="" value="${docenteInstance?.edad}"/>
 					</div>
 				</div>
+				<br/>
+				<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'dni', 'error')} required">
+					<div class="input-group">
+						<span class="input-group-addon" style="size: " id="basic-addon1">DNI</span>
+						<g:textField name="dni" class="form-control" disabled="${!modoEdicion}" placeholder="dni" aria-describedby="basic-addon1" required="" value="${docenteInstance?.dni}"/>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

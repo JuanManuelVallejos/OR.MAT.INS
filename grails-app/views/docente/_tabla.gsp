@@ -8,6 +8,7 @@
         <td>Teléfono</td>
         <td>Dirección</td>
         <td>Edad</td>
+        <td>DNI</td>
     </tr>
     </thead>
     <tbody>

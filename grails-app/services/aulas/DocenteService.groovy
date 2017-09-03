@@ -3,7 +3,7 @@ package aulas
 class DocenteService {
 
 
-    def getDocente(long id){
+    def getDocenteById(id){
         return Docente.get(id)
     }
 
@@ -12,4 +12,11 @@ class DocenteService {
         return Docente.findAllByNombreLike(likeBusqueda,likeBusqueda)
     }
 
+    def getAllDocentes(){
+        Docente.findAll()
+    }
+
+    def saveDocente(Docente docente){
+        docente.save flush:true
+    }
 }

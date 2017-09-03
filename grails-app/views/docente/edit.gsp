@@ -1,4 +1,3 @@
-<%@ page import="aulas.Docente" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,14 +12,10 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<div id="datosDocente">
-				<g:render template="form" model="[docenteInstance: docenteInstance, modoEdicion: true]"/>
-			</div>
-			<fieldset class="buttons">
-				<g:form action="update">
-					<g:actionSubmit class="btn btn-primary"  value="Actualizar" />
-				</g:form>
-			</fieldset>
+			<g:uploadForm controller="docente" action="update">
+				<g:render template="form" model="[docenteInstance: docenteInstance, modoEdicion: true]"></g:render>
+				<g:submitButton name="btnUpload" class="btn btn-primary"  value="Actualizar" />
+			</g:uploadForm>
 		</div>
 	</div>
 </body>
