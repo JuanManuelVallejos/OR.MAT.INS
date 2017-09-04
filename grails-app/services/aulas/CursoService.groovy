@@ -2,18 +2,17 @@ package aulas
 
 class CursoService {
 
-    def getCursoOfDivision(Division division) {
-        Curso cursoConDivision = null
-        Curso.all.each {
-            curso ->
-            if(curso.divisiones.contains(division))
-                cursoConDivision = curso
-        }
-        cursoConDivision
+    def addDivision(Curso curso, Division division){
+        if(curso.divisiones == null)
+            curso.divisiones = new ArrayList<Division>()
+        curso.divisiones.add division
+        division.setCurso(curso)
+        division.save flush:true
+        curso.save flush:true
     }
 
-    def getAllCursos(){
-        Curso.getAll()
+    def getCursoById(id){
+        Curso.get(id)
     }
 
 }

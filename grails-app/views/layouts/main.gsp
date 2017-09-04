@@ -25,6 +25,7 @@
 			<li><g:link controller="docente" action="create">Registrar docente</g:link></li>
 			<li><g:link controller="docente" action="index">Docentes registrados</g:link></li>
 			<li><g:link controller="curso" action="index">Cursos</g:link></li>
+			<li><g:link controller="materia" action="index">Materias</g:link></li>
 		</ul>
 	</nav>
 	<div class="jumbotron" style="opacity: 0.9">

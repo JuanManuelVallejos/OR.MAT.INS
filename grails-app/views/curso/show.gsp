@@ -39,13 +39,11 @@
 			<div class="panel panel-default">
 				<div class="panel panel-heading">Agregar division</div>
 				<div class="panel-body">
-					<fieldset class="buttons">
-						<g:form controller="division" action="save" params="[curso: cursoObj, division: divisionInstance]">
-							<g:textField id="inputDivision" name="division" placeholder="Nombre de division" value="${divisionInstance?.division}"></g:textField>
-							<g:hiddenField name="cursoObj" id="cursoObj" accesskey="cursoObj" value="${cursoInstance}" />
-							<g:actionSubmit class="btn btn-primary" name="save" value="save" />
-						</g:form>
-					</fieldset>
+                    <g:uploadForm action="addDivision">
+                        <g:textField id="inputDivision" name="nombreDivision" placeholder="Nombre de division" required="required"></g:textField>
+                        <g:hiddenField name="cursoId" value="${cursoInstance.id}" />
+                        <g:submitButton class="btn btn-primary" name="save" value="Agregar nueva división" />
+                    </g:uploadForm>
 				</div>
 			</div>
 		</div>

@@ -1,21 +1,18 @@
 package aulas
 
-
-
-import static org.springframework.http.HttpStatus.*
-
 class CursoController {
 
-    static scaffold = true
-
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", addDivision: "POST"]
+    static cursoService
+    static divisionService
 
     def index() {
         [cursos: Curso.all]
     }
 
     def show(Curso cursoInstance) {
-        respond cursoInstance
+        Division division = new Division()
+        [cursoInstance: cursoInstance, divisionInstance: division]
     }
 
     def create(Curso cursoCreado) {
@@ -32,57 +29,14 @@ class CursoController {
         render ([view: 'index', model:[cursos: Curso.all]])
     }
 
+    def addDivision(){
+        Curso cursoInstance = cursoService.getCursoById(params.cursoId)
+        Division division = divisionService.saveDivision(params.nombreDivision)
+        cursoService.addDivision(cursoInstance, division)
+        render([view:'show',model:[cursoInstance: cursoInstance]])
+    }
+
     def edit(Curso cursoInstance) {
         respond cursoInstance
-    }
-
-    def update(Curso cursoInstance) {
-        if (cursoInstance == null) {
-            notFound()
-            return
-        }
-
-        if (cursoInstance.hasErrors()) {
-            respond cursoInstance.errors, view:'edit'
-            return
-        }
-
-        cursoInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Curso.label', default: 'Curso'), cursoInstance.id])
-                redirect cursoInstance
-            }
-            '*'{ respond cursoInstance, [status: OK] }
-        }
-    }
-
-    def delete(Curso cursoInstance) {
-
-        if (cursoInstance == null) {
-            notFound()
-            return
-        }
-
-        cursoInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Curso.label', default: 'Curso'), cursoInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'curso.label', default: 'Curso'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
     }
 }

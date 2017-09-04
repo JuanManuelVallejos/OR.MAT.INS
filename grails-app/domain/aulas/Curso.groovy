@@ -1,8 +1,15 @@
 package aulas
 
 class Curso {
-    List<Division> divisiones
+    static hasMany = [divisiones: Division]
     String nombre
 
-    static constraints = {}
+    static constraints = {
+        divisiones nullable: false
+        nombre size: 1..30
+    }
+
+    Curso(){
+        divisiones = new ArrayList<Division>()
+    }
 }

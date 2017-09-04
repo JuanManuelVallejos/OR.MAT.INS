@@ -5,4 +5,5 @@ databaseChangeLog = {
     include file: "DELTA_004_DATOS_CURSO.groovy"
     include file: "DELTA_005_NOMBRE_CURSO.groovy"
     include file: "DELTA_006_CONSTRAINTS_DOCENTE.groovy"
+    include file: "DELTA_007_RELACION_CURSO_DIVISION.groovy"
 }
