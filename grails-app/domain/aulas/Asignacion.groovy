@@ -1,7 +1,11 @@
 package aulas
 
 class Asignacion {
-    Integer hora
 
-    static constraints = {}
+    Integer hora
+    static belongsTo = [division: Division]
+
+    static constraints = {
+        hora inList: 0..24
+    }
 }

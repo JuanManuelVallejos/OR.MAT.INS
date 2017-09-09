@@ -16,5 +16,8 @@ class Docente {
         edad max: 99
         email email: true
         titular blank: true, nullable: true
+        dni unique: true
     }
+
+
 }

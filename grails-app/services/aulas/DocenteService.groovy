@@ -13,7 +13,7 @@ class DocenteService {
     }
 
     def getAllDocentes(){
-        Docente.findAll()
+        Docente.getAll()
     }
 
     def saveDocente(Docente docente){

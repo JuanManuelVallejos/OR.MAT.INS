@@ -2,19 +2,16 @@ package aulas
 
 class DivisionController {
 
-    static scaffold = true
+    static materiaService
+    static docenteService
 
     def index() { }
 
     def show(long id) {
         Division division = Division.findById(id)
-        Curso cursoActual = null
+        List<Materia> materiaList = materiaService.allMaterias
+        List<Docente> docenteList = docenteService.allDocentes
 
-        Curso.all.each{c ->
-            if(c.divisiones.contains(division))
-                cursoActual = c
-        }
-
-        [cursoInstance: cursoActual, divisionInstance: division]
+        [cursoInstance: division.curso, divisionInstance: division, materias:materiaList, docentes: docenteList]
     }
 }

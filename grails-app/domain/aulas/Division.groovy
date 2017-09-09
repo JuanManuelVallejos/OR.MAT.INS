@@ -1,10 +1,12 @@
 package aulas
 
 class Division {
-    String division
-    List<Asignacion> asignaciones
-    List<MateriaPorDocente> materiasPorDocente
 
+    String division
+    static hasMany = [
+            asignaciones: Asignacion,
+            materiasPorDocente: MateriaPorDocente
+    ]
     static belongsTo = [curso: Curso]
 
     static constraints = {
