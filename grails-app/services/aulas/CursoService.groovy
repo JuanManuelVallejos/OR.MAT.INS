@@ -15,4 +15,16 @@ class CursoService {
         Curso.get(id)
     }
 
+    def getAllCursos(){
+        Curso.all.sort{ it.nombre }
+    }
+
+    def getAllDivisiones(Curso curso){
+        curso.divisiones.sort { it.division }
+    }
+
+    def saveCurso(Curso curso){
+        curso.save flush: true
+    }
+
 }

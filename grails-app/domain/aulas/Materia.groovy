@@ -4,6 +4,6 @@ class Materia {
     String nombre
 
     static constraints = {
-        nombre size: 1..50
+        nombre size: 1..50, maxSize: 50
     }
 }

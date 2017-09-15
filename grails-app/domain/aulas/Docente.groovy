@@ -11,12 +11,14 @@ class Docente {
     String dni
 
     static constraints = {
-        nombre size:1..60
-        apellido size:1..60
-        edad max: 99
+        nombre size:1..60, maxSize: 60
+        apellido size:1..60, maxSize: 60
         email email: true
+        telefono validator: { tel -> tel.isInteger() }
+        direccion maxSize: 50
+        edad min:18, max: 99
         titular blank: true, nullable: true
-        dni unique: true
+        dni unique: true, maxSize: 8, validator: { dni -> dni.isInteger() }
     }
 
 

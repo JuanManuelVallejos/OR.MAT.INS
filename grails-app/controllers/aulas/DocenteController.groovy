@@ -19,14 +19,15 @@ class DocenteController {
         [docenteInstance: docente]
     }
 
-    def save(Docente docenteInstance) {
-
-        if (docenteInstance.hasErrors()) {
-            respond docenteInstance.errors, view:'create'
+    def save(Docente docenteInstance){
+        docenteInstance.validate()
+        if (docenteInstance.hasErrors()){
+            render view: 'create', model: [docenteInstance: docenteInstance]
             return
         }
-        docenteService.saveDocente(docenteInstance)
-        redirect docenteInstance: docenteInstance
+        else{
+            redirect(action:"create")
+        }
     }
 
     def update(Docente docenteInstance) {

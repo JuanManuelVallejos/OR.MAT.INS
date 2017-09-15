@@ -6,6 +6,10 @@ class MateriaService {
         Materia.get(id)
     }
 
+    def saveMateria(Materia materia){
+        materia.save flush: true
+    }
+
     def getAllMaterias(){
         Materia.getAll()
     }

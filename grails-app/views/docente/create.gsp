@@ -10,10 +10,13 @@
 			</div>
 		</div>
 		<br/>
+		<g:if test="${flash.error}">
+			<div class="alert alert-danger" role="alert">${flash.error}</div>
+		</g:if>
 		<div class="row">
 			<div class="col-md-12">
 				<g:uploadForm controller="docente" action="save">
-					<g:render template="form" model="[docenteInstance: docenteInstance, modoEdicion:true]"></g:render>
+					<g:render template="form" model="[docenteInstance: docenteInstance, modoEdicion:true, errors:errors]"></g:render>
 					<g:submitButton name="crearBtn" class="btn btn-primary" value="Crear docente"></g:submitButton>
 				</g:uploadForm>
 			</div>

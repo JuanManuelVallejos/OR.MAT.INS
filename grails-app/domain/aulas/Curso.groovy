@@ -6,7 +6,7 @@ class Curso {
 
     static constraints = {
         divisiones nullable: false
-        nombre size: 1..30
+        nombre size: 1..30, maxSize: 30
     }
 
     Curso(){

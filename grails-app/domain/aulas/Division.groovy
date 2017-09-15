@@ -18,4 +18,5 @@ class Division {
         asignaciones = new ArrayList<Asignacion>()
         materiasPorDocente = new ArrayList<MateriaPorDocente>()
     }
+
 }
