@@ -23,7 +23,7 @@ class MateriaPorDocenteController {
     }
 
     def deleteMateriaPorDocente(){
-        
+
         Division division = divisionService.getDivisionById(params.divisionId)
         MateriaPorDocente materiaPorDocente = materiaPorDocenteService.getMateriaPorDocenteById(params.matXDocId)
         materiaPorDocenteService.eliminarMateriaPorDocente(materiaPorDocente)

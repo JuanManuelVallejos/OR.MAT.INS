@@ -9,7 +9,7 @@ class CursoController {
     static docenteService
 
     def index() {
-        [cursos: cursoService.allCursos]
+        [cursos: cursoService.allCursos, edicionCurso: -1]
     }
 
     def show(Curso cursoInstance) {
@@ -26,14 +26,8 @@ class CursoController {
     }
 
     def save(Curso cursoInstance) {
-        cursoInstance.validate()
-
-        if (cursoInstance.hasErrors())
-            flash.error = "El nombre ingresado del curso no debe exceder los 30 caracteres"
-        else
-            cursoService.saveCurso(cursoInstance)
-
-        redirect(action: 'index')
+        if(guardarCursoValidando(cursoInstance))
+            redirect(action: 'index')
     }
 
     def addDivision(){
@@ -50,5 +44,33 @@ class CursoController {
 
     def edit(Curso cursoInstance) {
         respond cursoInstance
+    }
+
+    def guardarCursoValidando(Curso curso){
+        curso.validate()
+        if (curso.hasErrors()) {
+            flash.error = "El nombre ingresado del curso no debe exceder los 50 caracteres"
+            redirect(action: 'index')
+            false
+        }
+        else {
+            cursoService.saveCurso(curso)
+            true
+        }
+    }
+    
+    def modoEdicion(){
+        Curso curso = cursoService.getCursoById(params.cursoId)
+        int valorEdicion = params.int('valorEdicion')
+        if(valorEdicion == curso.id){
+            curso.nombre = params.nombreEditado
+            if(guardarCursoValidando(curso))
+                valorEdicion = -1
+            else
+                return
+        }
+        else
+            valorEdicion = curso.id
+        render([view:'index', model:[cursos: cursoService.allCursos, edicionCurso: valorEdicion]])
     }
 }
