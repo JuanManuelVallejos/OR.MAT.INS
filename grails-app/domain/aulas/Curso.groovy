@@ -1,8 +1,9 @@
 package aulas
 
 class Curso {
-    static hasMany = [divisiones: Division]
     String nombre
+
+    static hasMany = [divisiones: Division]
 
     static constraints = {
         divisiones nullable: false
@@ -12,4 +13,10 @@ class Curso {
     Curso(){
         divisiones = new ArrayList<Division>()
     }
+
+//    void validar() {
+//        if (!nombre) {
+//            reject
+//        }
+//    }
 }

@@ -1,5 +1,5 @@
 
-<%@ page import="com.aulas.User" %>
+<%@ page import="seguridad.User" %>
 <!DOCTYPE html>
 <html>
 	<head>

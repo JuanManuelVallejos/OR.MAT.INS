@@ -1,4 +1,4 @@
-<%@ page import="com.aulas.User" %>
+<%@ page import="seguridad.User" %>
 
 
 

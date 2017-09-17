@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         <g:if test="${modoAdicion}" >
-            <g:render template="/materiaPorDocente/filaAdicionMateriaPorDocente" model="[materias: materias, docentes: docentes]" />
+            <g:render template="/materiaPorDocente/filaAdicionMateriaPorDocente" model="[materias: materias, docentes: docentes, errors: errors]" />
         </g:if>
         <g:else>
             <g:each in="${division.materiasPorDocente}" var="materiaHorasDocente">

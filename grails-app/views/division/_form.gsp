@@ -8,13 +8,13 @@
 	</thead>
 	<tbody>
 		<td>
-			<g:textField id="inputDivision" name="nombreDivision" placeholder="Nombre de division" required="required"></g:textField>
+			<g:textField id="inputDivision" name="nombreDivision" placeholder="Nombre de division" required="required" maxlength="30"></g:textField>
 		</td>
 		<td>
-			<g:textField id="inputHoraInicial" name="horaInicial" placeholder="12" required="required"></g:textField>
+			<g:field type="number" id="inputHoraInicial" name="horaInicial" placeholder="12" max="23" required="required"></g:field>
 		</td>
 		<td>
-			<g:textField id="inputCantidadHoras" name="cantidadHoras" placeholder="4" required="required"></g:textField>
+			<g:field type="number" name="cantidadHoras" placeholder="4" max="56" required="required"></g:field>
 		</td>
 	</tbody>
 </table>

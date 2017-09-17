@@ -1,5 +1,7 @@
 package aulas
 
+import seguridad.User
+
 class DivisionService {
 
     static asignacionService
@@ -8,10 +10,10 @@ class DivisionService {
         Division.get(id)
     }
 
-    def saveDivision(String nombreDivision, Curso curso) {
+    def saveDivision(String nombreDivision, Curso curso, horaInicial, cantidadHoras) {
         Division newDivision = new Division(division: nombreDivision, curso: curso)
         newDivision.save flush: true
-        generateAsignaciones(newDivision, 12, 4)
+        generateAsignaciones(newDivision, horaInicial, cantidadHoras)
         newDivision
     }
 

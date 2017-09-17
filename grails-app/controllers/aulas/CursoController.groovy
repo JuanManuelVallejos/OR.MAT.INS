@@ -32,9 +32,10 @@ class CursoController {
 
     def addDivision(){
         Curso cursoInstance = cursoService.getCursoById(params.cursoId)
-        Division division = divisionService.saveDivision(params.nombreDivision, cursoInstance)
-        cursoService.addDivision(cursoInstance, division)
-
+        Division division = divisionService.saveDivision(params.nombreDivision, cursoInstance, params.int('horaInicial'), params.int('cantidadHoras'))
+        //cursoService.addDivision(cursoInstance, division)
+        cursoInstance.addToDivisiones(division)
+        cursoService.saveCurso(cursoInstance)
         List<Materia> materiaList = materiaService.allMaterias
         List<Docente> docenteList = docenteService.allDocentes
         List<Division> divisionesOrdenadas = cursoService.getAllDivisiones cursoInstance

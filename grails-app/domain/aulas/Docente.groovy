@@ -1,5 +1,7 @@
 package aulas
 
+import seguridad.User
+
 class Docente {
     String nombre
     String apellido
@@ -9,6 +11,7 @@ class Docente {
     Integer edad
     Boolean titular
     String dni
+    static belongsTo = [user: User]
 
     static constraints = {
         nombre size:1..60, maxSize: 60
@@ -20,6 +23,5 @@ class Docente {
         titular blank: true, nullable: true
         dni unique: true, maxSize: 8, validator: { dni -> dni.isInteger() }
     }
-
 
 }

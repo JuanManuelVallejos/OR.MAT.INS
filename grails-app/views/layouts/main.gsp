@@ -21,11 +21,28 @@
 <div class="container">
 	<nav class="navbar navbar-inverse">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Ormatins <span class="sr-only">(current)</span></a></li>
-			<li><g:link controller="docente" action="create">Registrar docente</g:link></li>
-			<li><g:link controller="docente" action="index">Docentes registrados</g:link></li>
-			<li><g:link controller="curso" action="index">Cursos</g:link></li>
-			<li><g:link controller="materia" action="index">Materias</g:link></li>
+			<li class="active"><a href="/aulas/">Ormatins <span class="sr-only">(current)</span></a></li>
+			<sec:ifNotLoggedIn>
+				<li><g:link controller="login" action="index">Iniciar sesion</g:link></li>
+			</sec:ifNotLoggedIn>
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<li><g:link controller="docente" action="create">Registrar docente</g:link></li>
+			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<li><g:link controller="docente" action="index">Docentes registrados</g:link></li>
+			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<li><g:link controller="curso" action="index">Cursos</g:link></li>
+			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<li><g:link controller="materia" action="index">Materias</g:link></li>
+			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_DOCENTE">
+				<li><g:link controller="docente" action="show">Mi informacion</g:link></li>
+			</sec:ifAllGranted>
+			<sec:ifLoggedIn>
+				<li><g:link controller="logout" action="index">Cerrar sesion</g:link></li>
+			</sec:ifLoggedIn>
 		</ul>
 	</nav>
 	<div class="jumbotron" style="opacity: 0.9">

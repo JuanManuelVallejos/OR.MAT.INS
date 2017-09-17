@@ -36,7 +36,7 @@
 				</g:if>
 				<div class="input-group">
 					<span class="input-group-addon" style="size: " id="basic-addon1">Teléfono</span>
-					<g:textField name="telefono" class="form-control" disabled="${!modoEdicion}" placeholder="Telefono" aria-describedby="basic-addon1" required="" value="${docenteInstance?.telefono}"/>
+					<g:field type="number" name="telefono" class="form-control" disabled="${!modoEdicion}" placeholder="Telefono" aria-describedby="basic-addon1" required="" value="${docenteInstance?.telefono}"/>
 				</div>
 				<br/>
 				<g:if test="${hasErrors(bean: docenteInstance, field: 'direccion', 'error')}">
@@ -52,7 +52,7 @@
 				</g:if>
 				<div class="input-group">
 					<span class="input-group-addon" style="size: " id="basic-addon1">Edad</span>
-					<g:textField name="edad" class="form-control" disabled="${!modoEdicion}" placeholder="edad" aria-describedby="basic-addon1" required="" value="${docenteInstance?.edad}"/>
+					<g:field type="number" name="edad" class="form-control" disabled="${!modoEdicion}" placeholder="edad" aria-describedby="basic-addon1" required="" value="${docenteInstance?.edad}"/>
 				</div>
 				<br/>
 				<g:if test="${hasErrors(bean: docenteInstance, field: 'dni', 'error')}">
@@ -60,7 +60,17 @@
 				</g:if>
 				<div class="input-group">
 					<span class="input-group-addon" style="size: " id="basic-addon1">DNI</span>
-					<g:textField name="dni" class="form-control" disabled="${!modoEdicion}" placeholder="dni" aria-describedby="basic-addon1" required="" value="${docenteInstance?.dni}"/>
+					<g:field type="number" name="dni" class="form-control" disabled="${!modoEdicion}" placeholder="dni" aria-describedby="basic-addon1" required="" value="${docenteInstance?.dni}"/>
+				</div>
+				<br/>
+				<div class="input-group">
+					<span class="input-group-addon" style="size: " id="basic-addon1">User</span>
+					<g:textField name="username" class="form-control" disabled="${!modoEdicion}" placeholder="ejemplo.17" aria-describedby="basic-addon1" required="" value="${docenteInstance?.user?.username}"/>
+				</div>
+				<br/>
+				<div class="input-group" style="type: password">
+					<span class="input-group-addon" style="size: " id="basic-addon1">Password</span>
+					<g:passwordField name="password" type="password" class="form-control" disabled="${!modoEdicion}" placeholder="***********" aria-describedby="basic-addon1" required="" value="${docenteInstance?.user?.password}"/>
 				</div>
 			</div>
 		</div>

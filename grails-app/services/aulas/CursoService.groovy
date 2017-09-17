@@ -1,28 +1,26 @@
 package aulas
 
+import grails.transaction.Transactional
+
+@Transactional
 class CursoService {
 
-    def addDivision(Curso curso, Division division){
-        if(curso.divisiones == null)
-            curso.divisiones = new ArrayList<Division>()
-        curso.divisiones.add division
-        division.setCurso(curso)
-        division.save flush:true
-        curso.save flush:true
-    }
-
+    @Transactional(readOnly = true)
     def getCursoById(id){
         Curso.get(id)
     }
 
+    @Transactional(readOnly = true)
     def getAllCursos(){
         Curso.all.sort{ it.nombre }
     }
 
+    @Transactional(readOnly = true)
     def getAllDivisiones(Curso curso){
         curso.divisiones.sort { it.division }
     }
 
+    @Transactional
     def saveCurso(Curso curso){
         curso.save flush: true
     }
