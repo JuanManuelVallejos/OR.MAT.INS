@@ -4,6 +4,7 @@ import org.springframework.aop.target.HotSwappableTargetSource
 
 // Place your Spring DSL code here
 beans = {
+
     "org.grails.internal.URL_MAPPINGS_HOLDER"(UrlMappingsHolderFactoryBean) { bean ->
         bean.lazyInit = true
     }

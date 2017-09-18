@@ -14,9 +14,9 @@ class Curso {
         divisiones = new ArrayList<Division>()
     }
 
-//    void validar() {
-//        if (!nombre) {
-//            reject
-//        }
-//    }
+    void validar() {
+        if (!nombre) {
+
+        }
+    }
 }

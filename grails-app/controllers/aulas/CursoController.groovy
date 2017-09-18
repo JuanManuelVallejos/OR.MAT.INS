@@ -1,6 +1,6 @@
 package aulas
 
-class CursoController {
+class CursoController extends EditableController{
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", addDivision: "POST"]
     static cursoService
@@ -9,7 +9,7 @@ class CursoController {
     static docenteService
 
     def index() {
-        [cursos: cursoService.allCursos, edicionCurso: -1]
+        super.index()
     }
 
     def show(Curso cursoInstance) {
@@ -26,7 +26,7 @@ class CursoController {
     }
 
     def save(Curso cursoInstance) {
-        if(guardarCursoValidando(cursoInstance))
+        if(guardarInstanciaValidando(cursoInstance))
             redirect(action: 'index')
     }
 
@@ -47,31 +47,18 @@ class CursoController {
         respond cursoInstance
     }
 
-    def guardarCursoValidando(Curso curso){
-        curso.validate()
-        if (curso.hasErrors()) {
-            flash.error = "El nombre ingresado del curso no debe exceder los 50 caracteres"
-            redirect(action: 'index')
-            false
-        }
-        else {
-            cursoService.saveCurso(curso)
-            true
-        }
+    def saveInstancia(curso){
+        cursoService.saveCurso(curso)
     }
-    
-    def modoEdicion(){
-        Curso curso = cursoService.getCursoById(params.cursoId)
-        int valorEdicion = params.int('valorEdicion')
-        if(valorEdicion == curso.id){
-            curso.nombre = params.nombreEditado
-            if(guardarCursoValidando(curso))
-                valorEdicion = -1
-            else
-                return
-        }
-        else
-            valorEdicion = curso.id
-        render([view:'index', model:[cursos: cursoService.allCursos, edicionCurso: valorEdicion]])
+    def getInstanciaById(id){
+        cursoService.getCursoById(id)
+    }
+
+    def setCampoEditable(curso, nombreCurso){
+        curso.nombre = nombreCurso
+    }
+
+    def allInstancias(){
+        cursoService.allCursos
     }
 }

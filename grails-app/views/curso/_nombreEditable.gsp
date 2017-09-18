@@ -8,7 +8,7 @@
         </g:else>
     </td>
     <td>
-        <g:hiddenField name="cursoId" value="${curso.id}"></g:hiddenField>
+        <g:hiddenField name="instanciaId" value="${curso.id}"></g:hiddenField>
         <g:hiddenField name="valorEdicion" value="${edicionCurso}"></g:hiddenField>
         <g:submitButton name="Edit" value="Editar"></g:submitButton>
     </td>

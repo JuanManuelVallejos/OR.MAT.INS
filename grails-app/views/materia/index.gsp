@@ -18,7 +18,7 @@
 		</g:if>
 
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h2 class="panel-title">Materias registradas</h2>
@@ -32,10 +32,10 @@
 							</tr>
 							</thead>
 							<tbody>
-								<g:each in="${materias}" var="materia">
+								<g:each in="${instancias}" var="materia">
 									<g:form name="upCambiarModo" action="modoEdicion">
 										<div id="edit${materia.id}">
-											<g:render template="nombreEditable" model="[edicionMateria: edicionMateria, materia: materia]"></g:render>
+											<g:render template="nombreEditable" model="[edicionMateria: edicion, materia: materia]"></g:render>
 										</div>
 									</g:form>
 								</g:each>

@@ -29,10 +29,10 @@
 							</tr>
 							</thead>
 							<tbody>
-								<g:each in="${cursos}" var="curso">
+								<g:each in="${instancias}" var="curso">
 									<g:form name="upCambiarModo" action="modoEdicion">
 										<div id="edit${curso.id}">
-											<g:render template="nombreEditable" model="[edicionCurso: edicionCurso, curso: curso]"></g:render>
+											<g:render template="nombreEditable" model="[edicionCurso: edicion, curso: curso]"></g:render>
 										</div>
 									</g:form>
 								</g:each>
