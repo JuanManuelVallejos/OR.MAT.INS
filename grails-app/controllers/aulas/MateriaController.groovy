@@ -3,7 +3,6 @@ package aulas
 class MateriaController extends EditableController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", modoEdicion: "POST"]
-
     static materiaService
 
     def index() {
@@ -40,6 +39,14 @@ class MateriaController extends EditableController {
 
     def allInstancias(){
         materiaService.allMaterias
+    }
+
+    def getTitulo(){
+        "Materia"
+    }
+
+    def getLink(){
+        "index"
     }
 
 }

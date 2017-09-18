@@ -61,4 +61,12 @@ class CursoController extends EditableController{
     def allInstancias(){
         cursoService.allCursos
     }
+
+    def getTitulo(){
+        "Curso"
+    }
+
+    def getLink(){
+        "show"
+    }
 }

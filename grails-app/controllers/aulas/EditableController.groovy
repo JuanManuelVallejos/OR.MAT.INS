@@ -6,9 +6,13 @@ abstract class EditableController {
     abstract def getInstanciaById(id)
     abstract def setCampoEditable(instancia, campo)
     abstract def allInstancias()
+    abstract def getTitulo()
+    abstract def getLink()
 
     def index(){
-        [instancias: allInstancias(), edicion: -1]
+        render([view: '/editable/grillaEditable',model:
+                [instancias: allInstancias(), edicion: -1,
+                 titulo: getTitulo(), accionLink: getLink()]])
     }
 
     def guardarInstanciaValidando(instancia){
@@ -25,7 +29,7 @@ abstract class EditableController {
     }
 
     def modoEdicion(){
-        Object instancia = getInstanciaById(params.instanciaId)
+        def instancia = getInstanciaById(params.instanciaId)
         int valorEdicion = params.int('valorEdicion')
         if(valorEdicion == instancia.id){
              setCampoEditable(instancia, params.nombreEditado)
@@ -36,6 +40,6 @@ abstract class EditableController {
         }
         else
             valorEdicion = instancia.id
-        render([view:'index', model:[instancias: allInstancias(), edicion: valorEdicion]])
+        render([view:'/editable/grillaEditable', model:[instancias: allInstancias(), edicion: valorEdicion, titulo:"Materia", controllerName:"materia"]])
     }
 }
