@@ -19,4 +19,9 @@ class Division {
         materiasPorDocente = new ArrayList<MateriaPorDocente>()
     }
 
+    def validate(){
+        if(this.division)
+            this.errors.reject("El nombre de la division no puede ser nula")
+    }
+
 }

@@ -18,7 +18,9 @@ abstract class EditableController {
     def guardarInstanciaValidando(instancia){
         instancia.validate()
         if (instancia.hasErrors()) {
-            flash.error = instancia.errors
+            if (instancia.errors.hasFieldErrors('nombre')) {
+                flash.error = instancia.errors.getFieldError('nombre').getCode()
+            }
             redirect(action: 'index')
             false
         }

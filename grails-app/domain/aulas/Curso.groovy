@@ -7,16 +7,21 @@ class Curso {
 
     static constraints = {
         divisiones nullable: false
-        nombre size: 1..30, maxSize: 30
+        nombre validator: { val, obj, errors ->
+            if (val == "")
+            {
+                return errors.rejectValue('nombre', 'El campo nombre no debe ser vacio')
+            }
+            else{
+                if(val?.size() > 50){
+                    return errors.rejectValue('nombre', 'El campo nombre no debe superar los 50 caracteres')
+                }
+                return false
+            }
+        }
     }
 
     Curso(){
         divisiones = new ArrayList<Division>()
-    }
-
-    void validar() {
-        if (!nombre) {
-
-        }
     }
 }
