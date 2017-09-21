@@ -2,11 +2,11 @@
 <g:hiddenField name="version" value="${docenteInstance?.version}"/>
 <div class="row">
 	<div class="col-md-5" align="center">
-		<div class="panel panel-primary">
+		<div class="panel panel-success">
 			<div class="panel-heading">
 				<h2 class="panel-title">Información personal</h2>
 			</div>
-			<span class="panel-body">
+			<div class="panel-body">
 				<g:if test="${hasErrors(bean: docenteInstance, field: 'nombre', 'error')}">
 					<span style="color: red;">El nombre puede contener hasta 60 caracteres.</span>
 				</g:if>

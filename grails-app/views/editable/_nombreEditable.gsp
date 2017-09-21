@@ -5,7 +5,7 @@
         </g:if>
         <g:else>
             <label id="nombre">
-                <g:link action="${accionLink}" id="${instancia?.id}">${instancia?.nombre}</g:link>
+                <g:link action="${accionLink}" id="${instancia?.id}" style="color:green">${instancia?.nombre}</g:link>
             </label>
         </g:else>
     </td>

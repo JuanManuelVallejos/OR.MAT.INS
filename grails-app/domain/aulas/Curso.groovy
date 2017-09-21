@@ -12,11 +12,8 @@ class Curso {
             {
                 return errors.rejectValue('nombre', 'El campo nombre no debe ser vacio')
             }
-            else{
-                if(val?.size() > 50){
-                    return errors.rejectValue('nombre', 'El campo nombre no debe superar los 50 caracteres')
-                }
-                return false
+            if(val?.size() > 50){
+                return errors.rejectValue('nombre', 'El campo nombre no debe superar los 50 caracteres')
             }
         }
     }

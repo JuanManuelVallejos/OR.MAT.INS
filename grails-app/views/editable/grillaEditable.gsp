@@ -17,7 +17,7 @@
 </g:if>
 <div class="row">
     <div class="col-md-6">
-        <div class="panel panel-primary">
+        <div class="panel panel-success">
             <div class="panel-heading">
                 <h2 class="panel-title">${titulo}s registradas</h2>
             </div>
@@ -43,7 +43,7 @@
             <div class="panel-footer">
                 <g:form name="save" action="save">
                     <g:textField id="inputNombre" name="nombre" placeholder="Nombre de ${titulo}" value="${materiaInstance?.nombre}" maxlength="50"></g:textField>
-                    <g:submitButton class="btn btn-primary" name="save" value="Agregar" />
+                    <g:submitButton class="btn btn-success" name="save" value="Agregar" />
                 </g:form>
             </div>
         </div>

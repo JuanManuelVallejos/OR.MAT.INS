@@ -17,7 +17,7 @@
 			<div class="col-md-12">
 				<g:uploadForm controller="docente" action="save">
 					<g:render template="form" model="[docenteInstance: docenteInstance, modoEdicion:true, errors:errors]"></g:render>
-					<g:submitButton name="crearBtn" class="btn btn-primary" value="Crear docente"></g:submitButton>
+					<g:submitButton name="crearBtn" class="btn btn-success" value="Crear docente"></g:submitButton>
 				</g:uploadForm>
 			</div>
 		</div>

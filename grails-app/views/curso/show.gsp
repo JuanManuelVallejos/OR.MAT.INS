@@ -13,13 +13,13 @@
 <br/>
 <div class="row">
     <div class="col-md-8">
-        <div class="panel panel-primary">
+        <div class="panel panel-success">
             <div class="panel panel-heading">Agregar division</div>
             <div class="panel-body">
                 <g:uploadForm action="addDivision">
                     <g:render template="/division/form"></g:render>
                     <g:hiddenField name="cursoId" value="${cursoInstance.id}" />
-                    <g:submitButton class="btn btn-primary" name="save" value="Agregar nueva división" />
+                    <g:submitButton class="btn btn-success" name="save" value="Agregar nueva división" />
                 </g:uploadForm>
             </div>
         </div>
@@ -43,9 +43,9 @@
                                         <br />
                                         <g:uploadForm name="deleteForm" controller="division" action="eliminar">
                                             <g:hiddenField name="divisionID" value="${division.id}"></g:hiddenField>
-                                            <g:submitButton name="X" class="btn btn-sm btn-danger">
-                                                <span class="glyphicon glyphicon-remove" title="Eliminar"></span>
-                                            </g:submitButton>
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Esta acción eliminará el curso entero, incluido los datos que se cagaron en el. ¿Estas seguro?')">
+                                                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+                                            </button>
                                         </g:uploadForm>
                                     </div>
                                 </div>

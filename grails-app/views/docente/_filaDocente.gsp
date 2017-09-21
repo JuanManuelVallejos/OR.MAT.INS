@@ -1,6 +1,6 @@
 <tr>
     <td>
-        <label id="nombre"><g:link action="edit" id="${docente.id}">${docente.nombre}</g:link></label>
+        <label id="nombre"><g:link action="edit" id="${docente.id}" style="color:green">${docente.nombre}</g:link></label>
     </td>
     <td>
         <label id="apellido">${docente.apellido}</label>
