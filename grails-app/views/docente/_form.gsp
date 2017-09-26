@@ -1,7 +1,7 @@
 <g:hiddenField name="id" value="${docenteInstance?.id}"></g:hiddenField>
 <g:hiddenField name="version" value="${docenteInstance?.version}"/>
 <div class="row">
-	<div class="col-md-5" align="center">
+	<div class="col-md-12" align="center">
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<h2 class="panel-title">Información personal</h2>

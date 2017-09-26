@@ -34,4 +34,15 @@ class DocenteService {
     def getDocenteConUser(User user){
         Docente.findByUser(user)
     }
+
+    def agregarMateria(Docente docente, materia){
+        docente.materiasQueDicto.add(materia)
+        docente.save()
+    }
+
+    def eliminarMateria(Docente docente, materia){
+        docente.materiasQueDicto.remove(materia)
+        docente.save()
+    }
+
 }

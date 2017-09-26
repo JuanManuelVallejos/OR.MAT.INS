@@ -8,4 +8,5 @@ databaseChangeLog = {
     include file: "DELTA_007_RELACION_CURSO_DIVISION.groovy"
     include file: "DELTA_008_CONSTRAINT_MATERIA_DOCENTE.groovy"
     include file: "DELTA_009_SE_AGREGA_USER_A_DOCENTE.groovy"
+    include file: "DELTA_010_SE_AGREGAN_MATERIAS_A_DOCENTE.groovy"
 }
