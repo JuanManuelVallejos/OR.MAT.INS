@@ -14,7 +14,7 @@
 			<div class="alert alert-danger" role="alert">${flash.error}</div>
 		</g:if>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<g:uploadForm controller="docente" action="save">
 					<g:render template="form" model="[docenteInstance: docenteInstance, modoEdicion:true, errors:errors]"></g:render>
 					<g:submitButton name="crearBtn" class="btn btn-success" value="Crear docente"></g:submitButton>

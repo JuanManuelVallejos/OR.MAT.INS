@@ -3,7 +3,7 @@ import seguridad.User
 
 class DocenteController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE", agregarMateria: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE", agregarMateria: "POST", uploadTitulo: "POST", downloadFile: "GET"]
     def docenteService
     def materiaService
     def springSecurityService
@@ -13,10 +13,19 @@ class DocenteController {
     }
 
     def show(Docente docente){
+        renderShow()
+    }
+
+    def renderShow(){
+        Docente docenteLogueado = getDocenteLogueado()
+        def materiaList = materiaService.allMaterias
+
+        [docenteInstance: docenteLogueado, materias: materiaList.minus(docenteLogueado.materiasQueDicto), materiasDeDocente: docenteLogueado.materiasQueDicto, materiasCount: docenteLogueado.materiasQueDicto.size(), documentInstanceList: docenteLogueado.titulos]
+    }
+
+    def getDocenteLogueado(){
         User user = (User) springSecurityService.getCurrentUser()
-        Docente docenteLogueado = docenteService.getDocenteConUser(user)
-        List<Materia> materiaList = materiaService.allMaterias
-        [docenteInstance: docenteLogueado, materias: materiaList.minus(docenteLogueado.materiasQueDicto), materiasDeDocente: docenteLogueado.materiasQueDicto]
+        docenteService.getDocenteConUser(user)
     }
 
     def create() {
@@ -31,9 +40,8 @@ class DocenteController {
 
     def save(Docente docenteInstance){
         def user = new User(username: params.username, enabled: true, password: params.password)
-        docenteInstance.user = user
         docenteInstance.validate()
-
+        docenteInstance.user = user
         if (docenteInstance.hasErrors()){
             render view: 'create', model: [docenteInstance: docenteInstance]
             return
@@ -49,9 +57,7 @@ class DocenteController {
             respond docenteInstance.errors, view: 'edit'
             return
         }
-
         docenteService.saveDocente(docenteInstance)
-
         render ([view: 'index', model:[docenteList: docenteService.getAllDocentes()]])
     }
 
@@ -65,15 +71,46 @@ class DocenteController {
         Docente docente = docenteService.getDocenteById(params.docenteId)
         docenteService.agregarMateria(docente, materia)
         List<Materia> materiaList = materiaService.allMaterias
-        render ([view: 'show', model:[docenteInstance: docente, materias: materiaList.minus(docente.materiasQueDicto), materiasDeDocente: docente.materiasQueDicto]])
+        render ([view: 'show', model:[docenteInstance: docente, materias: materiaList.minus(docente.materiasQueDicto), materiasDeDocente: docente.materiasQueDicto, materiasCount: docente.materiasQueDicto.size()]])
     }
 
     def eliminarMateria(){
         Materia materia = materiaService.getMateriaById(params.materiaAEliminarId)
         Docente docente = docenteService.getDocenteById(params.docenteAEliminarId)
         docenteService.eliminarMateria(docente, materia)
-        List<Materia> materiaList = materiaService.allMaterias
-        render ([view: 'show', model:[docenteInstance: docente, materias: materiaList.minus(docente.materiasQueDicto), materiasDeDocente: docente.materiasQueDicto]])
+        redirect (action:'show')
     }
 
+    def upload() {
+        def file = request.getFile('file')
+        if(file.empty) {
+            redirect (action:'show')
+            return
+        }
+        String path = 'Documentacion/'+ file.fileItem.fileName
+        docenteService.addTituloToDocente(getDocenteLogueado(), file.fileItem.fileName, path)
+        file.transferTo(new File(path))
+        redirect (action:'show')
+    }
+
+    def downloadFile(){
+        def doc = DocumentoRespaldatorio.get(params.id)
+        def file = new File("${doc.fullPath}")
+        if (file.exists())
+        {
+            response.setContentType("application/octet-stream") // or or image/JPEG or text/xml or whatever type the file is
+            response.setHeader("Content-disposition", "attachment;filename=\"${file.name}\"")
+            response.outputStream << file.bytes
+        }
+        else render "Error!" // appropriate error handling
+    }
+
+    def deleteFile(){
+        def doc = DocumentoRespaldatorio.get(params.documentId)
+        def file = new File(doc.fullPath)
+        docenteService.removeTituloToDocente(getDocenteLogueado(), doc)
+        file.delete()
+        redirect (action:'show')
+    }
 }
+

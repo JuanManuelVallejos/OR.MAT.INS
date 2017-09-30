@@ -48,11 +48,6 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <div class="paginate">
-                                    <g:paginate total="${personTotal ?: materiasAsignadas.count}"
-                                                controller="docente" action="show"
-                                                max="${max ?: 6}" offset="${offset ?: 0}" />
-                                </div>
                             </div>
                         </div>
                     </div>

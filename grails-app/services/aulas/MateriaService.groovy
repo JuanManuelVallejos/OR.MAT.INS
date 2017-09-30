@@ -11,6 +11,6 @@ class MateriaService {
     }
 
     def getAllMaterias(){
-        Materia.getAll()
+        Materia.all.sort { it.nombre }
     }
 }

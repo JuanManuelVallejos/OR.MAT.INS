@@ -45,4 +45,17 @@ class DocenteService {
         docente.save()
     }
 
+    def addTituloToDocente(docente, fileName, filePath){
+        DocumentoRespaldatorio docRes = new DocumentoRespaldatorio()
+        docRes.fileName = fileName
+        docRes.fullPath = filePath
+        docente.addToTitulos(docRes)
+        docente.save flush: true
+    }
+
+    def removeTituloToDocente(docente, titulo){
+        docente.titulos.remove(titulo)
+        docente.save flush: true
+    }
+
 }
