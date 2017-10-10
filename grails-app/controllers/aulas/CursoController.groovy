@@ -2,7 +2,7 @@ package aulas
 
 class CursoController extends EditableController{
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", addDivision: "POST"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", addDivision: "POST", SetEditableOActualizar: "POST"]
     static cursoService
     static divisionService
     static materiaService
@@ -21,19 +21,15 @@ class CursoController extends EditableController{
         [cursoInstance: cursoInstance, materias:materiaList, docentes: docenteList, divisionesOrdenadas: divisionesOrdenadas]
     }
 
-    def create(Curso cursoCreado) {
-        respond new Curso(nombre: cursoCreado.nombre)
-    }
+
 
     def save(Curso cursoInstance) {
-        if(guardarInstanciaValidando(cursoInstance))
-            redirect(action: 'index')
+        actualizar(cursoInstance)
     }
 
     def addDivision(){
         Curso cursoInstance = cursoService.getCursoById(params.cursoId)
         Division division = divisionService.saveDivision(params.nombreDivision, cursoInstance, params.int('horaInicial'), params.int('cantidadHoras'))
-        //cursoService.addDivision(cursoInstance, division)
         cursoInstance.addToDivisiones(division)
         cursoService.saveCurso(cursoInstance)
         List<Materia> materiaList = materiaService.allMaterias

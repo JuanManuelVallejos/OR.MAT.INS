@@ -27,4 +27,9 @@ class Docente {
         dni unique: true, maxSize: 8, validator: { dni -> dni.isInteger() }
     }
 
+    Docente(){
+        materiasQueDicto = new ArrayList<Materia>()
+        titulos = new ArrayList<DocumentoRespaldatorio>()
+    }
+
 }

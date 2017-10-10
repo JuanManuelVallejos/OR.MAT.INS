@@ -6,6 +6,6 @@
 	</head>
 	<body>
 		<h1>Ormatins</h1>
-		<h2>Organizador de materia institucionales</h2>
+		<h2>Organizador de materias institucionales</h2>
 	</body>
 </html>

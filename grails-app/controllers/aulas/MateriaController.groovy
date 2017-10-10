@@ -18,8 +18,7 @@ class MateriaController extends EditableController {
     }
 
     def save(Materia materiaInstance) {
-        if(guardarInstanciaValidando(materiaInstance))
-            redirect(action: 'index')
+        actualizar(materiaInstance)
     }
 
     def edit(Materia materiaInstance) {

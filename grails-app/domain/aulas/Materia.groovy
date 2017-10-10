@@ -9,14 +9,9 @@ class Materia {
             {
                 return errors.rejectValue('nombre', 'El campo nombre no debe ser vacio')
             }
-            else{
-                if(val?.size() > 50){
-                    return errors.rejectValue('nombre', 'El campo nombre no debe superar los 50 caracteres')
-                }
-                return false
+            if(val?.size() > 50){
+                return errors.rejectValue('nombre', 'El campo nombre no debe superar los 50 caracteres')
             }
         }
-        //nombre blank: false, maxSize: 50, validator: {value, object ->
-            //if(nombre) return 'validation.idStartsWith77'
     }
 }
