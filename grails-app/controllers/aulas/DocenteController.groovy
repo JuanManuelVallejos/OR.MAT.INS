@@ -71,14 +71,15 @@ class DocenteController {
         Docente docente = docenteService.getDocenteById(params.docenteId)
         docenteService.agregarMateria(docente, materia)
         List<Materia> materiaList = materiaService.allMaterias
-        render ([view: 'show', model:[docenteInstance: docente, materias: materiaList.minus(docente.materiasQueDicto), materiasDeDocente: docente.materiasQueDicto, materiasCount: docente.materiasQueDicto.size()]])
+
+        render([template: 'materiasDocente', model: [docenteInstance: docente, materiasDeDocente: docente.materiasQueDicto]])
     }
 
     def eliminarMateria(){
-        Materia materia = materiaService.getMateriaById(params.materiaAEliminarId)
-        Docente docente = docenteService.getDocenteById(params.docenteAEliminarId)
+        Materia materia = materiaService.getMateriaById(request.JSON.materiaId)
+        Docente docente = docenteService.getDocenteById(request.JSON.docenteId)
         docenteService.eliminarMateria(docente, materia)
-        redirect (action:'show')
+        render([template: 'materiasDocente', model: [docenteInstance: docente, materiasDeDocente: docente.materiasQueDicto]])
     }
 
     def upload() {

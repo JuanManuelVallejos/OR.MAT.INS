@@ -1,6 +1,6 @@
 <tr>
     <td>
-        <g:select class="btn btn-default dropdown-toggle" name="materiaId" from="${materias}" noSelection="${['null':'Seleccione una materia']}" optionKey="id" optionValue="nombre"></g:select>
+        <g:select id="selectMaterias${divisionId}" class="btn btn-default dropdown-toggle" onchange="injectDocentes('selectDocentes${divisionId}','selectMaterias${divisionId}')" name="materiaId" from="${materias}" noSelection="${['null':'Seleccione una materia']}" optionKey="id" optionValue="nombre"></g:select>
     </td>
     <td>
         <g:if test="${flash.error}">
@@ -9,6 +9,6 @@
         <g:textField name="horas" required="required" typeof="Integer"></g:textField>
     </td>
     <td>
-        <g:select class="btn btn-default dropdown-toggle" name="docenteId" from="${docentes}" noSelection="${['null':'Seleccione un docente']}" optionKey="id" optionValue="apellido" ></g:select>
+        <g:select id="selectDocentes${divisionId}" class="btn btn-default dropdown-toggle" name="docenteId" from="${null}" noSelection="${['null':'Seleccione una materia']}" optionKey="id" optionValue="apellido" ></g:select>
     </td>
 </tr>

@@ -58,4 +58,8 @@ class DocenteService {
         docente.save flush: true
     }
 
+    def getDocentesQueDictenMateria(Materia materia){
+        return allDocentes.findAll{ it.materiasQueDicto.contains(materia) }
+    }
+
 }

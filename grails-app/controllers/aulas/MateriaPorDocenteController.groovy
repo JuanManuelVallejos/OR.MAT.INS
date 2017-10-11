@@ -34,4 +34,29 @@ class MateriaPorDocenteController {
         render([template: '/division/dataDivision',model:[divisionInstance: division, materias:materiaList, docentes: docenteList, idDivision: division.id]])
     }
 
+    def filterDocentePorMateria(){
+        Materia materia = materiaService.getMateriaById(request.JSON.materiaId)
+        render(contentType: 'text/json') {[
+                'results': getDocentesParaSelectDeMateria(materia),
+                'status': results ? "OK" : "Nothing present"
+        ]}
+    }
+
+    def getDocentesParaSelectDeMateria(Materia materia){
+        String resultadoSelect = ""
+        List<Docente> docentesParaMateria = docenteService.getDocentesQueDictenMateria(materia)
+        if(docentesParaMateria.empty)
+            resultadoSelect += buildOptionWith("null","La materia no tiene docente asignado")
+        else
+            resultadoSelect += buildOptionWith("null","Seleccione un docente")
+
+        for(Docente docente in docentesParaMateria)
+            resultadoSelect += buildOptionWith(docente.id,docente.apellido)
+        return resultadoSelect
+    }
+
+    def buildOptionWith(key, value){
+        "<option value=\" ${key} \">${value}</option>"
+    }
+
 }

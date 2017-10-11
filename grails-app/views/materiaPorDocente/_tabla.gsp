@@ -3,15 +3,18 @@
     <tr>
         <th>Materia</th>
         <th>Horas a cubrir</th>
-        <th>Docente</th>
-        <g:if test="${!modoAdicion}" >
-            <th>Acciones</th>
+        <g:if test="${modoAdicion}" >
+            <th>Docentes que pueden dictar Materia</th>
         </g:if>
+        <g:else >
+            <th>Docentes</th>
+            <th>Acciones</th>
+        </g:else>
     </tr>
     </thead>
     <tbody>
         <g:if test="${modoAdicion}" >
-            <g:render template="/materiaPorDocente/filaAdicionMateriaPorDocente" model="[materias: materias, docentes: docentes, errors: errors]" />
+            <g:render template="/materiaPorDocente/filaAdicionMateriaPorDocente" model="[materias: materias, docentes: docentes, errors: errors, divisionId: division.id]" />
         </g:if>
         <g:else>
             <g:each in="${division.materiasPorDocente}" var="materiaHorasDocente">

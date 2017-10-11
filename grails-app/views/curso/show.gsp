@@ -1,6 +1,29 @@
 <html>
 <head>
 	<meta name="layout" content="main"/>
+    <r:script>
+        function injectDocentes(idSelectDocentes, idSelectMateria){
+            var URL='${createLink(controller: 'materiaPorDocente', action: 'filterDocentePorMateria')}';
+            $.ajax({
+                url: URL,
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ materiaId:  $('#'+idSelectMateria).val() }),
+                cache: false,
+                async: true,
+                success:[
+                    function(data) {
+                        $('#'+idSelectDocentes+' option').remove();
+                        $('#'+idSelectDocentes).append(data.results);
+                    }
+                ],
+                error:[
+                    function(data) {  }
+                ]
+            })
+
+        }
+    </r:script>
 	<r:require modules="bootstrap"/>
 </head>
 <body>

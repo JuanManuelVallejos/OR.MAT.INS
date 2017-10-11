@@ -1,6 +1,27 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
+        <r:script>
+            function callEliminar(materiaID, docenteID){
+                var URL='${createLink(controller: 'docente', action: 'eliminarMateria')}';
+                $.ajax({
+                    url: URL,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ materiaId:  materiaID, docenteId: docenteID }),
+                    cache: false,
+                    async: true,
+                    success:[
+                        function(data) {
+                            $('#tablaMaterias').html(data);
+                        }
+                    ],
+                    error:[
+                        function(data) {  }
+                    ]
+                })
+            }
+        </r:script>
 		<r:require modules="bootstrap"/>
 	</head>
 	<body>
