@@ -17,14 +17,22 @@ class DivisionService {
         newDivision
     }
 
-    def generateAsignaciones(Division division, horaInicial, horas) {
-        for (int hora = horaInicial; hora < horaInicial + horas; hora++) {
-            addAsignacion(division, hora)
+    def generateAsignaciones(Division division,int horaInicial, int horas) {
+        def dia = DayOfWeek.MONDAY
+        for(i in 1..5){
+            addAsignacionesPorDia(division,horaInicial, horas, dia)
+            dia++
         }
     }
 
-    def addAsignacion(Division division, hora){
-        Asignacion asignacion = asignacionService.crearAsignacion(hora, division)
+    def addAsignacionesPorDia(Division division, int horaInicial, int horas, DayOfWeek dia){
+        for (int hora = horaInicial; hora < horaInicial + horas; hora++) {
+            addAsignacion(division, hora, dia)
+        }
+    }
+
+    def addAsignacion(Division division, int hora, DayOfWeek dia){
+        Asignacion asignacion = asignacionService.crearAsignacion(hora, division, dia)
         asignacion
     }
 
