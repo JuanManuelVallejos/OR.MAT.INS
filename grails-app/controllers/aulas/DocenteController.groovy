@@ -67,8 +67,8 @@ class DocenteController {
     }
 
     def agregarMateria(){
-        Materia materia = materiaService.getMateriaById(params.materiaId)
-        Docente docente = docenteService.getDocenteById(params.docenteId)
+        Materia materia = materiaService.getMateriaById(request.JSON.materiaId)
+        Docente docente = docenteService.getDocenteById(request.JSON.docenteId)
         docenteService.agregarMateria(docente, materia)
         List<Materia> materiaList = materiaService.allMaterias
 

@@ -13,7 +13,7 @@
                         ${materiaAsignada.nombre}
                     </th>
                     <th>
-                        <g:submitButton class="btn btn-danger" name="delete" value="Eliminar" onclick="javascript:callEliminar(${materiaAsignada.id},${docenteInstance.id})" />
+                        <g:submitButton class="btn btn-danger" name="delete" value="Eliminar" onclick="javascript:callEliminar(${materiaAsignada.id} , '${materiaAsignada.nombre}' , ${docenteInstance.id})" />
                     </th>
                 </tr>
             </g:each>

@@ -10,17 +10,14 @@
                         <h2 class="panel-title">Ingresar Materia que dicto</h2>
                     </div>
                     <div class="panel-body">
-                        <g:formRemote name="agregarMateria" url="[controller: 'docente', action:'agregarMateria']" update="tablaMaterias">
-                            <g:hiddenField name="docenteId" value="${docenteInstance.id}"></g:hiddenField>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <g:select class="btn btn-default dropdown-toggle" name="materiaId" from="${materias}" noSelection="${['null':'Seleccione una materia']}" optionKey="id" optionValue="nombre" ></g:select>
-                                </div>
-                                <div class="col-md-8">
-                                    <g:submitButton class="btn btn-success" name="save" value="Agregar" />
-                                </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <g:select id="selectMateria" class="selectpicker show-menu-arrow" name="materiaId" from="${materias}" noSelection="${['null':'Seleccione una materia']}" optionKey="id" optionValue="nombre" required="required" />
                             </div>
-                        </g:formRemote>
+                            <div class="col-md-8">
+                                <g:submitButton class="btn btn-success" name="save" value="Agregar" onclick="javascript:callAgregar(${docenteInstance.id})" />
+                            </div>
+                        </div>
                         <div id="tablaMaterias" class="row">
                             <g:render template="materiasDocente" model="[docenteInstance: docenteInstance, materiasDeDocente: materiasDeDocente]"></g:render>
                         </div>
