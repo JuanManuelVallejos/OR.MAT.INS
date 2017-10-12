@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5eb3c03c-6e68-456f-b5a6-5ab567e9d351" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/work/tomcat/work/Tomcat/localhost/aulas/grails-resources/css/errors.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aulas/DocenteController.class" afterPath="$PROJECT_DIR$/target/classes/aulas/DocenteController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/aulas/DocenteController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/aulas/DocenteController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/docente/_formProfesional.gsp" afterPath="$PROJECT_DIR$/grails-app/views/docente/_formProfesional.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/docente/_materiasDocente.gsp" afterPath="$PROJECT_DIR$/grails-app/views/docente/_materiasDocente.gsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/docente/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/docente/show.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/stacktrace.log" afterPath="$PROJECT_DIR$/target/stacktrace.log" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$USER_HOME$/.grails/" />
@@ -28,8 +25,8 @@
       <file leaf-file-name="show.gsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/curso/show.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="22" selection-end-column="14" />
+            <state relative-caret-position="140">
+              <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
               <folding>
                 <marker date="1507751741392" expanded="true" signature="133:873" ph="{...}" />
                 <marker date="1507751741392" expanded="true" signature="259:861" ph="{&quot;url&quot;: URL...}" />
@@ -41,23 +38,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grillaEditable.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/editable/grillaEditable.gsp">
+      <file leaf-file-name="_form.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/division/_form.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="18" />
-              <folding>
-                <marker date="1507754171579" expanded="true" signature="123:233" ph="{...}" />
-              </folding>
+            <state relative-caret-position="380">
+              <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_tablaEditable.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/editable/_tablaEditable.gsp">
+      <file leaf-file-name="_dataDivision.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/division/_dataDivision.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -73,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_dataDivision.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/division/_dataDivision.gsp">
+      <file leaf-file-name="_tablaEditable.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/editable/_tablaEditable.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+            <state relative-caret-position="60">
+              <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -86,21 +81,26 @@
       <file leaf-file-name="show.gsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/docente/show.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="62" column="42" lean-forward="false" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="42" />
+            <state relative-caret-position="320">
+              <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
               <folding>
-                <marker date="1507770071748" expanded="true" signature="72:1034" ph="{...}" />
-                <marker date="1507770071748" expanded="true" signature="140:1034" ph="{...}" />
-                <marker date="1507770071748" expanded="true" signature="256:1019" ph="{&quot;url&quot;: URL...}" />
-                <marker date="1507770071748" expanded="true" signature="576:906" ph="[...]" />
-                <marker date="1507770071748" expanded="true" signature="617:884" ph="{...}" />
-                <marker date="1507770071748" expanded="true" signature="934:1001" ph="[...]" />
-                <marker date="1507770071748" expanded="true" signature="1078:1985" ph="{...}" />
-                <marker date="1507770071748" expanded="true" signature="1252:1970" ph="{&quot;url&quot;: URL...}" />
-                <marker date="1507770071748" expanded="true" signature="1572:1857" ph="[...]" />
-                <marker date="1507770071748" expanded="true" signature="1572:1970" ph="[...]" />
-                <marker date="1507770071748" expanded="true" signature="1613:1835" ph="{...}" />
-                <marker date="1507770071748" expanded="true" signature="1885:1952" ph="[...]" />
+                <marker date="1507774615822" expanded="true" signature="72:1034" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="140:1034" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="256:1019" ph="{&quot;url&quot;: URL...}" />
+                <marker date="1507774615822" expanded="true" signature="576:906" ph="[...]" />
+                <marker date="1507774615822" expanded="true" signature="617:884" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="934:1001" ph="[...]" />
+                <marker date="1507774615822" expanded="true" signature="1078:2113" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="1078:2127" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="1185:2113" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="1308:2094" ph="{&quot;url&quot;: URL...}" />
+                <marker date="1507774615822" expanded="true" signature="1656:1965" ph="[...]" />
+                <marker date="1507774615822" expanded="true" signature="1656:2094" ph="[...]" />
+                <marker date="1507774615822" expanded="true" signature="1701:1939" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="1997:2072" ph="[...]" />
+                <marker date="1507774615822" expanded="true" signature="2176:2499" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="2217:2339" ph="{...}" />
+                <marker date="1507774615822" expanded="true" signature="2360:2485" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -109,8 +109,8 @@
       <file leaf-file-name="index.gsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/docente/index.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+            <state relative-caret-position="500">
+              <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
               <folding>
                 <marker date="1504231112177" expanded="true" signature="228:1009" ph="{...}" />
                 <marker date="1504231112177" expanded="true" signature="359:990" ph="{&quot;url&quot;: URL...}" />
@@ -122,23 +122,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_formProfesional.gsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/docente/_formProfesional.gsp">
+      <file leaf-file-name="_tabla.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/docente/_tabla.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="81" lean-forward="true" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
+            <state relative-caret-position="320">
+              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DocenteController.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/aulas/DocenteController.groovy">
+      <file leaf-file-name="_formProfesional.gsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/docente/_formProfesional.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="72" column="62" lean-forward="true" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
+            <state relative-caret-position="220">
+              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
-                <marker date="1507768707584" expanded="true" signature="1677:1683" ph="{...}" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -215,7 +216,6 @@
         <option value="$PROJECT_DIR$/grails-app/domain/aulas/Division.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/aulas/Curso.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/docente/_filaDocente.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/division/_dataDivision.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/docente/_form.gsp" />
         <option value="$PROJECT_DIR$/grails-app/domain/aulas/DocumentoRespaldatorio.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/aulas/MateriaService.groovy" />
@@ -242,8 +242,9 @@
         <option value="$PROJECT_DIR$/grails-app/views/curso/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/editable/grillaEditable.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/aulas/DocenteController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/views/docente/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/docente/_materiasDocente.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/division/_dataDivision.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/docente/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/docente/_formProfesional.gsp" />
       </list>
     </option>
@@ -309,6 +310,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OR.MAT.INS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OR.MAT.INS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -867,12 +890,12 @@
       <workItem from="1507545395342" duration="24739000" />
       <workItem from="1507669581987" duration="2570000" />
       <workItem from="1507721241937" duration="4744000" />
-      <workItem from="1507743314264" duration="16408000" />
+      <workItem from="1507743314264" duration="19909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269943000" />
+    <option name="totallyTimeSpent" value="273444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1302" y="-11" width="1303" height="780" extended-state="6" />
@@ -900,7 +923,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07739938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25418326" sideWeight="0.39628482" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25418326" sideWeight="0.6037152" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25418326" sideWeight="0.6037152" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25418326" sideWeight="0.39628482" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -954,13 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/docente/_tabla.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/aulas/MateriaPorDocente.groovy">
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
@@ -1006,13 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/division/_form.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1278,18 +1287,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/division/_dataDivision.gsp">
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/aulas/DocenteController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        <state relative-caret-position="266">
+          <caret line="72" column="62" lean-forward="true" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
+          <folding>
+            <marker date="1507768707584" expanded="true" signature="1677:1683" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/editable/grillaEditable.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="15" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+          <folding>
+            <marker date="1507754171579" expanded="true" signature="123:233" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/docente/_tabla.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/editable/_tablaEditable.gsp">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/division/_form.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+        <state relative-caret-position="380">
+          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/division/_dataDivision.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1302,50 +1339,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/editable/_tablaEditable.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/docente/index.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+        <state relative-caret-position="500">
+          <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
           <folding>
             <marker date="1504231112177" expanded="true" signature="228:1009" ph="{...}" />
             <marker date="1504231112177" expanded="true" signature="359:990" ph="{&quot;url&quot;: URL...}" />
             <marker date="1504231112177" expanded="true" signature="696:862" ph="[...]" />
             <marker date="1504231112177" expanded="true" signature="741:836" ph="{...}" />
             <marker date="1504231112177" expanded="true" signature="894:968" ph="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/aulas/DocenteController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="72" column="62" lean-forward="true" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
-          <folding>
-            <marker date="1507768707584" expanded="true" signature="1677:1683" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/curso/show.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="22" selection-end-column="14" />
-          <folding>
-            <marker date="1507751741392" expanded="true" signature="133:873" ph="{...}" />
-            <marker date="1507751741392" expanded="true" signature="259:861" ph="{&quot;url&quot;: URL...}" />
-            <marker date="1507751741392" expanded="true" signature="548:764" ph="[...]" />
-            <marker date="1507751741392" expanded="true" signature="585:746" ph="{...}" />
-            <marker date="1507751741392" expanded="true" signature="788:847" ph="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/editable/grillaEditable.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <marker date="1507754171579" expanded="true" signature="123:233" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1358,32 +1369,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/curso/show.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <marker date="1507751741392" expanded="true" signature="133:873" ph="{...}" />
+            <marker date="1507751741392" expanded="true" signature="259:861" ph="{&quot;url&quot;: URL...}" />
+            <marker date="1507751741392" expanded="true" signature="548:764" ph="[...]" />
+            <marker date="1507751741392" expanded="true" signature="585:746" ph="{...}" />
+            <marker date="1507751741392" expanded="true" signature="788:847" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/docente/show.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="62" column="42" lean-forward="false" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="42" />
+        <state relative-caret-position="320">
+          <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
           <folding>
-            <marker date="1507770071748" expanded="true" signature="72:1034" ph="{...}" />
-            <marker date="1507770071748" expanded="true" signature="140:1034" ph="{...}" />
-            <marker date="1507770071748" expanded="true" signature="256:1019" ph="{&quot;url&quot;: URL...}" />
-            <marker date="1507770071748" expanded="true" signature="576:906" ph="[...]" />
-            <marker date="1507770071748" expanded="true" signature="617:884" ph="{...}" />
-            <marker date="1507770071748" expanded="true" signature="934:1001" ph="[...]" />
-            <marker date="1507770071748" expanded="true" signature="1078:1985" ph="{...}" />
-            <marker date="1507770071748" expanded="true" signature="1252:1970" ph="{&quot;url&quot;: URL...}" />
-            <marker date="1507770071748" expanded="true" signature="1572:1857" ph="[...]" />
-            <marker date="1507770071748" expanded="true" signature="1572:1970" ph="[...]" />
-            <marker date="1507770071748" expanded="true" signature="1613:1835" ph="{...}" />
-            <marker date="1507770071748" expanded="true" signature="1885:1952" ph="[...]" />
+            <marker date="1507774615822" expanded="true" signature="72:1034" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="140:1034" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="256:1019" ph="{&quot;url&quot;: URL...}" />
+            <marker date="1507774615822" expanded="true" signature="576:906" ph="[...]" />
+            <marker date="1507774615822" expanded="true" signature="617:884" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="934:1001" ph="[...]" />
+            <marker date="1507774615822" expanded="true" signature="1078:2113" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="1078:2127" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="1185:2113" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="1308:2094" ph="{&quot;url&quot;: URL...}" />
+            <marker date="1507774615822" expanded="true" signature="1656:1965" ph="[...]" />
+            <marker date="1507774615822" expanded="true" signature="1656:2094" ph="[...]" />
+            <marker date="1507774615822" expanded="true" signature="1701:1939" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="1997:2072" ph="[...]" />
+            <marker date="1507774615822" expanded="true" signature="2176:2499" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="2217:2339" ph="{...}" />
+            <marker date="1507774615822" expanded="true" signature="2360:2485" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/docente/_formProfesional.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="81" lean-forward="true" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
-          <folding />
+        <state relative-caret-position="220">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -25,25 +25,38 @@
             }
             function callAgregar(docenteID){
                 var materiaID = $('#selectMateria').val();
-                var URL='${createLink(controller: 'docente', action: 'agregarMateria')}';
-                $.ajax({
-                    url: URL,
-                    type: 'POST',
-                    contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify({ materiaId:  materiaID, docenteId: docenteID }),
-                    cache: false,
-                    async: true,
-                    success:[
-                        function(data) {
-                            var query = "#selectMateria option[value='"+materiaID+"']";
-                            $(query).remove();
-                            $('#tablaMaterias').html(data);
-                        }
-                    ],
-                    error:[
-                        function(data) {  }
-                    ]
-                })
+                if(validateAgregar(materiaID)){
+                    var URL='${createLink(controller: 'docente', action: 'agregarMateria')}';
+                    $.ajax({
+                        url: URL,
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({ materiaId:  materiaID, docenteId: docenteID }),
+                        cache: false,
+                        async: true,
+                        success:[
+                            function(data) {
+                                var query = "#selectMateria option[value='"+materiaID+"']";
+                                $(query).remove();
+                                $('#tablaMaterias').html(data);
+                            }
+                        ],
+                        error:[
+                            function(data) {  }
+                        ]
+                    })
+                }
+            }
+
+            function validateAgregar(materiaID){
+                if(materiaID == "null"){
+                    $('#errorMateriaNoIngresada').css("display","");
+                    return false;
+                }
+                else{
+                    $('#errorMateriaNoIngresada').css("display","none");
+                    return true;
+                }
             }
         </r:script>
 		<r:require modules="bootstrap"/>
