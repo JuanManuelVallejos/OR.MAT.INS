@@ -7,7 +7,7 @@
             <div class="panel-body">
                 <div id="errorMateriaNoIngresada" style="display: none">
                     <div class="alert alert-danger" role="alert">
-                        <p style="font-size: 100%">Debe seleccionar una materia</p>
+                        <p id="msgErrorMateria" style="font-size: 100%">Debe seleccionar una materia</p>
                     </div>
                 </div>
                 <div class="panel panel-default">

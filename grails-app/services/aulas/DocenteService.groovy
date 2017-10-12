@@ -5,6 +5,7 @@ import seguridad.UserRole
 
 class DocenteService {
 
+    def disponibilidadService
 
     def getDocenteById(id){
         return Docente.get(id)
@@ -60,6 +61,18 @@ class DocenteService {
 
     def getDocentesQueDictenMateria(Materia materia){
         return allDocentes.findAll{ it.materiasQueDicto.contains(materia) }
+    }
+
+    def agregarDisponibilidad(Docente docente, dia, horaInicio, horaFinal){
+        Disponibilidad disponibilidad = new Disponibilidad(dia: dia, horaInicial: horaInicio, horaFinal: horaFinal)
+        disponibilidad.save flush: true
+        docente.addToDisponibilidades(disponibilidad)
+        docente.save flush: true
+    }
+
+    def eliminarDisponibilidad(Docente docente, Disponibilidad disponibilidad){
+        disponibilidadService.eliminarDisponibilidad(disponibilidad)
+        docente.save flush: true
     }
 
 }

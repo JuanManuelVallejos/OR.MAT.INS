@@ -3,7 +3,7 @@ package aulas
 class Asignacion {
 
     Integer hora
-    DayOfWeek dia
+    DiaSemana dia
 
     static belongsTo = [division: Division]
 

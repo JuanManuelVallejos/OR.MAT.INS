@@ -12,7 +12,7 @@ class Docente {
     Boolean titular
     String dni
     static belongsTo = [user: User]
-    static hasMany = [materiasQueDicto: Materia, titulos: DocumentoRespaldatorio]
+    static hasMany = [materiasQueDicto: Materia, titulos: DocumentoRespaldatorio, disponibilidades: Disponibilidad]
 
     static constraints = {
         materiasQueDicto nullable: false

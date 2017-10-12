@@ -1,7 +1,5 @@
 package aulas
 
-import seguridad.User
-
 class DivisionService {
 
     static asignacionService
@@ -18,20 +16,20 @@ class DivisionService {
     }
 
     def generateAsignaciones(Division division,int horaInicial, int horas) {
-        def dia = DayOfWeek.MONDAY
+        def dia = DiaSemana.LUNES
         for(i in 1..5){
             addAsignacionesPorDia(division,horaInicial, horas, dia)
             dia++
         }
     }
 
-    def addAsignacionesPorDia(Division division, int horaInicial, int horas, DayOfWeek dia){
+    def addAsignacionesPorDia(Division division, int horaInicial, int horas, DiaSemana dia){
         for (int hora = horaInicial; hora < horaInicial + horas; hora++) {
             addAsignacion(division, hora, dia)
         }
     }
 
-    def addAsignacion(Division division, int hora, DayOfWeek dia){
+    def addAsignacion(Division division, int hora, DiaSemana dia){
         Asignacion asignacion = asignacionService.crearAsignacion(hora, division, dia)
         asignacion
     }

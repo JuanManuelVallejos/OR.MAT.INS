@@ -11,4 +11,6 @@ databaseChangeLog = {
     include file: "DELTA_010_SE_AGREGAN_MATERIAS_A_DOCENTE.groovy"
     include file: "DELTA_011_SE_AGREGAN_TITULOS_A_DOCENTE.groovy"
     include file: "DELTA_012_SE_AGREGAN_DIAS_A_ASIGNACION.groovy"
+    include file: "DELTA_013_SE_AGREGA_DISPONIBILIDAD.groovy"
+    include file: "DELTA_014_SE_AGREGA_DOCENTE_A_DISPONIBILIDAD.groovy"
 }

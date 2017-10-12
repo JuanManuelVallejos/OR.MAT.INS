@@ -6,6 +6,7 @@ class DocenteController {
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE", agregarMateria: "POST", uploadTitulo: "POST", downloadFile: "GET"]
     def docenteService
     def materiaService
+    def disponibilidadService
     def springSecurityService
 
     def index() {
@@ -70,7 +71,6 @@ class DocenteController {
         Materia materia = materiaService.getMateriaById(request.JSON.materiaId)
         Docente docente = docenteService.getDocenteById(request.JSON.docenteId)
         docenteService.agregarMateria(docente, materia)
-        List<Materia> materiaList = materiaService.allMaterias
 
         render([template: 'materiasDocente', model: [docenteInstance: docente, materiasDeDocente: docente.materiasQueDicto]])
     }
@@ -112,6 +112,23 @@ class DocenteController {
         docenteService.removeTituloToDocente(getDocenteLogueado(), doc)
         file.delete()
         redirect (action:'show')
+    }
+
+    def agregarDisponibilidad(){
+        def dia = request.JSON.diaSemana
+        def horaInicio = request.JSON.horaInicio
+        def horaFinal = request.JSON.horaFinal
+        Docente docente = docenteService.getDocenteById(request.JSON.docenteID)
+        docenteService.agregarDisponibilidad(docente, dia, horaInicio, horaFinal)
+        render(template: 'disponibilidad', model:[docenteInstance: docente])
+    }
+
+    def eliminarDisponibilidad(){
+        Docente docente = docenteService.getDocenteById(request.JSON.docenteID)
+        Disponibilidad disponibilidad = disponibilidadService.getDisponibilidadById(request.JSON.disponibilidadID)
+        docenteService.eliminarDisponibilidad(docente, disponibilidad)
+
+        render(template: 'disponibilidad', model:[docenteInstance: docente])
     }
 }
 
