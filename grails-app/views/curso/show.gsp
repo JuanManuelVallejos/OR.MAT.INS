@@ -3,25 +3,42 @@
 	<meta name="layout" content="main"/>
     <r:script>
         function injectDocentes(idSelectDocentes, idSelectMateria){
-            var URL='${createLink(controller: 'materiaPorDocente', action: 'filterDocentePorMateria')}';
-            $.ajax({
-                url: URL,
-                type: 'POST',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify({ materiaId:  $('#'+idSelectMateria).val() }),
-                cache: false,
-                async: true,
-                success:[
-                    function(data) {
-                        $('#'+idSelectDocentes+' option').remove();
-                        $('#'+idSelectDocentes).append(data.results);
-                    }
-                ],
-                error:[
-                    function(data) {  }
-                ]
-            })
-
+            $('#'+idSelectDocentes+' option').remove();
+            var valorMateria = $('#'+idSelectMateria).val();
+            if(valorMateria != "null"){
+                var URL='${createLink(controller: 'materiaPorDocente', action: 'filterDocentePorMateria')}';
+                $.ajax({
+                    url: URL,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ materiaId:  valorMateria }),
+                    cache: false,
+                    async: true,
+                    success:[
+                        function(data) {
+                            $('#'+idSelectDocentes).append(data.results);
+                        }
+                    ],
+                    error:[
+                        function(data) {  }
+                    ]
+                })
+            }
+            else{
+                $('#'+idSelectDocentes).append('<option value="null">Seleccione una materia</option>');
+            }
+        }
+        function validateSelects(idDivision) {
+            var valorMateria = $('#selectMaterias'+idDivision).val();
+            var valorDocente = $('#selectDocentes'+idDivision).val();
+            if(valorMateria != "null" && valorDocente != "null"){
+                $('#errorAgregarMateriaDocente'+idDivision).css("display","none");
+                return true;
+            }
+            else{
+                $('#errorAgregarMateriaDocente'+idDivision).css("display","");
+                return false;
+            }
         }
     </r:script>
 	<r:require modules="bootstrap"/>
@@ -39,11 +56,11 @@
         <div class="panel panel-success">
             <div class="panel panel-heading">Agregar division</div>
             <div class="panel-body">
-                <g:uploadForm action="addDivision">
+                <g:formRemote name="addDivision" url="[controller:'curso', action:'addDivision']" update="allDivisiones">
                     <g:render template="/division/form"></g:render>
                     <g:hiddenField name="cursoId" value="${cursoInstance.id}" />
                     <g:submitButton class="btn btn-success" name="save" value="Agregar nueva división" />
-                </g:uploadForm>
+                </g:formRemote>
             </div>
         </div>
     </div>
@@ -51,35 +68,8 @@
 <br />
 <div class="row">
     <div class="col-md-12">
-        <div id="divisionesAccordion" data-children=".item">
-            <ul class="list-group">
-                <g:each in="${divisionesOrdenadas}" var="division">
-                    <li class="list-group-item list-group-item-success">
-                        <div class="item">
-                            <a data-toggle="collapse" data-parent="divisionesAccordion" href="#${division.id}" aria-expanded="false" aria-controls="${division.id}">
-                                <div class="row">
-                                    <div class="col col-md-10">
-                                        <h3>Division ${division.division}</h3>
-                                    </div>
-                            </a>
-                                    <div class="col col-md-2">
-                                        <br />
-                                        <g:uploadForm name="deleteForm" controller="division" action="eliminar">
-                                            <g:hiddenField name="divisionID" value="${division.id}"></g:hiddenField>
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Esta acción eliminará el curso entero, incluido los datos que se cagaron en el. ¿Estas seguro?')">
-                                                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
-                                            </button>
-                                        </g:uploadForm>
-                                    </div>
-                                </div>
-
-                            <div id="${division.id}" class="collapse" role="tabpanel">
-                                <g:render template="/division/dataDivision" model="[divisionInstance: division, materias:materias, docentes: docentes, idDivision: division.id]"></g:render>
-                            </div>
-                        </div>
-                    </li>
-                </g:each>
-            </ul>
+        <div id="allDivisiones">
+            <g:render template="/division/allDivisiones" model="[divisionesOrdenadas: divisionesOrdenadas, materias: materias, docentes: docentes]" />
         </div>
     </div>
 </div>

@@ -37,6 +37,9 @@
 			<sec:ifAllGranted roles="ROLE_ADMIN">
 				<li><g:link controller="materia" action="index">Materias</g:link></li>
 			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<li><g:link url="../administracion/index" >Admistración</g:link></li>
+			</sec:ifAllGranted>
 			<sec:ifAllGranted roles="ROLE_DOCENTE">
 				<li><g:link controller="docente" action="show">Mi informacion</g:link></li>
 			</sec:ifAllGranted>
