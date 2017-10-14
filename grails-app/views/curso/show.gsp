@@ -2,6 +2,31 @@
 <head>
 	<meta name="layout" content="main"/>
     <r:script>
+        function eliminarMateriaPorDocente(divisionId,materiaPorDocenteId){
+            if(confirm('Esta acción eliminará la materia seleccionada. ¿Estas seguro?')){
+                var URL='${createLink(controller: 'materiaPorDocente', action: 'deleteMateriaPorDocente')}';
+                $.ajax({
+                    url: URL,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ divisionId:  divisionId, materiaPorDocenteId: materiaPorDocenteId}),
+                    cache: false,
+                    async: true,
+                    success:[
+                        function(data) {
+                            $('#'+divisionId).html(data);
+                        }
+                    ],
+                    error:[
+                        function(data) {  }
+                    ]
+                })
+            }
+            else{
+                $('#'+idSelectDocentes).append('<option value="null">Seleccione una materia</option>');
+            }
+        }
+
         function injectDocentes(idSelectDocentes, idSelectMateria){
             $('#'+idSelectDocentes+' option').remove();
             var valorMateria = $('#'+idSelectMateria).val();
@@ -28,17 +53,71 @@
                 $('#'+idSelectDocentes).append('<option value="null">Seleccione una materia</option>');
             }
         }
-        function validateSelects(idDivision) {
+
+        function getHorasAAsignarCubiertas(divisionID) {
+          var retorno;
+          $.ajax({
+              url: '${createLink(controller: 'division', action: 'getHorasAAsignarCubiertas')}',
+              type: 'POST',
+              contentType: 'application/json; charset=utf-8',
+              data: JSON.stringify({ divisionID:  divisionID}),
+              cache: false,
+              async: false,
+              success:[
+                    function(data) {
+                        retorno = data.result;
+                    }
+                ],
+                error:[
+                    function(data) { alert(data) }
+                ]
+            })
+            return retorno;
+        }
+
+        function getTotalHorasAsignacion(divisionID) {
+            var retorno;
+            $.ajax({
+              url: '${createLink(controller: 'division', action: 'getTotalHorasAsignacion')}',
+              type: 'POST',
+              contentType: 'application/json; charset=utf-8',
+              data: JSON.stringify({ divisionID:  divisionID}),
+              cache: false,
+              async: false,
+              success:[
+                    function(data) {
+                        retorno = data.result;
+                    }
+                ],
+                error:[
+                    function(data) { alert(data) }
+                ]
+            })
+            return retorno;
+        }
+
+        function validateMateriaPorDocenteNuevo(idDivision) {
             var valorMateria = $('#selectMaterias'+idDivision).val();
             var valorDocente = $('#selectDocentes'+idDivision).val();
-            if(valorMateria != "null" && valorDocente != "null"){
-                $('#errorAgregarMateriaDocente'+idDivision).css("display","none");
-                return true;
-            }
-            else{
+            var cantidadHorasAAdicionar = parseInt($('#horas'+idDivision).val());
+
+            var horasAAsignarCubiertas = parseInt(getHorasAAsignarCubiertas(idDivision));
+            var totalHorasAsignacion = parseInt(getTotalHorasAsignacion(idDivision));
+            var sobrepasaHoras = horasAAsignarCubiertas + cantidadHorasAAdicionar > totalHorasAsignacion;
+
+            if(valorMateria == "null" && valorDocente == "null"){
+                $('#msgErrorMateria'+idDivision).text('Debe seleccionar materia y docente');
                 $('#errorAgregarMateriaDocente'+idDivision).css("display","");
                 return false;
             }
+            if(sobrepasaHoras){
+                console.log("sobrepasa");
+                $('#msgErrorMateria'+idDivision).text('No puede asignar esta cantidad de horas ya que sobrepasa la cantidad de horas semanales.');
+                $('#errorAgregarMateriaDocente'+idDivision).css("display","");
+                return false;
+            }
+            $('#errorAgregarMateriaDocente'+idDivision).css("display","none");
+            return true;
         }
     </r:script>
 	<r:require modules="bootstrap"/>

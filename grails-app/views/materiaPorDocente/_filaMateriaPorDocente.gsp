@@ -1,6 +1,4 @@
 <tr>
-    <g:hiddenField name="divisionId" value="${division.id}"></g:hiddenField>
-    <g:hiddenField name="matXDocId" value="${materiaPorDocente.id}"></g:hiddenField>
     <td>
         ${materiaPorDocente.materia.nombre}
     </td>
@@ -12,6 +10,6 @@
     </td>
     <td>
         <g:actionSubmit value="Eliminar" class="btn btn-danger btn-sm"
-                        onclick="return confirm('Esta acción eliminará la materia seleccionada. ¿Estas seguro?')" />
+                        onclick="javascript:eliminarMateriaPorDocente(${division.id},${materiaPorDocente.id})" />
     </td>
 </tr>

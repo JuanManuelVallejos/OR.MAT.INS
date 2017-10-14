@@ -24,4 +24,24 @@ class Division {
             this.errors.reject("El nombre de la division no puede ser nula")
     }
 
+    def getTotalHorasAsignacion(){
+        asignaciones.size()
+    }
+
+    def getHorasAAsignarCubiertas(){
+        if(materiasPorDocente.size() == 0) return 0
+        materiasPorDocente.sum { it.horasACubrir }
+    }
+
+    def getHorasAAsignarSinCubrir(){
+        totalHorasAsignacion - horasAAsignarCubiertas
+    }
+
+    def getSeCubrieronHorasAAsignar(){
+        totalHorasAsignacion - horasAAsignarCubiertas == 0
+    }
+
+    def sobrepasaHorasAAsignar(cantidadHoras){
+        horasAAsignarCubiertas + cantidadHoras > totalHorasAsignacion
+    }
 }

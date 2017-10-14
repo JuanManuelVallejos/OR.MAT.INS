@@ -41,8 +41,8 @@ class DocenteController {
 
     def save(Docente docenteInstance){
         def user = new User(username: params.username, enabled: true, password: params.password)
-        docenteInstance.validate()
         docenteInstance.user = user
+        docenteInstance.validate()
         if (docenteInstance.hasErrors()){
             render view: 'create', model: [docenteInstance: docenteInstance]
             return

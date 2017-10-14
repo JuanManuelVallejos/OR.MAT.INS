@@ -18,7 +18,7 @@ class CursoController extends EditableController{
 
         List<Division> divisionesOrdenadas = cursoService.getAllDivisiones cursoInstance
 
-        [cursoInstance: cursoInstance, materias:materiaList, docentes: docenteList, divisionesOrdenadas: divisionesOrdenadas]
+        [cursoInstance: cursoInstance, materias:materiaList, docentes: docenteList, divisionesOrdenadas: divisionesOrdenadas, horasCubiertas: false]
     }
 
     def save(Curso cursoInstance) {
@@ -34,7 +34,7 @@ class CursoController extends EditableController{
         List<Docente> docenteList = docenteService.allDocentes
         List<Division> divisionesOrdenadas = cursoService.getAllDivisiones cursoInstance
 
-        render([template:'/division/allDivisiones', model: [divisionesOrdenadas: divisionesOrdenadas, docentes: docenteList, materias: materiaList]])
+        render([template:'/division/allDivisiones', model: [divisionesOrdenadas: divisionesOrdenadas, docentes: docenteList, materias: materiaList, horasCubiertas: true]])
     }
 
     def edit(Curso cursoInstance) {

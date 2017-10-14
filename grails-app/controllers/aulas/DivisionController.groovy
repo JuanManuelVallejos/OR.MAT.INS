@@ -31,4 +31,20 @@ class DivisionController {
         render([view: '/curso/show',model:[cursoInstance: curso, materias:materiaList, docentes: docenteList, divisionesOrdenadas:divisionesOrdenadas]])
     }
 
+    def getHorasAAsignarCubiertas(){
+        Division division = divisionService.getDivisionById(request.JSON.divisionID)
+        render(contentType: 'text/json') {[
+                'result': division.horasAAsignarCubiertas,
+                'status': result ? "OK" : "Nothing present"
+        ]}
+    }
+
+    def getTotalHorasAsignacion(){
+        Division division = divisionService.getDivisionById(request.JSON.divisionID)
+        render(contentType: 'text/json') {[
+                'result': division.totalHorasAsignacion,
+                'status': result ? "OK" : "Nothing present"
+        ]}
+    }
+
 }

@@ -6,7 +6,7 @@
         <g:if test="${flash.error}">
             <div class="alert alert-danger" role="alert">${flash.error}</div>
         </g:if>
-        <g:textField name="horas" required="required" typeof="Integer"></g:textField>
+        <g:textField name="horas${divisionId}" required="required" typeof="Integer"></g:textField>
     </td>
     <td>
         <g:select id="selectDocentes${divisionId}" class="btn btn-default dropdown-toggle" name="docenteId" from="${null}" noSelection="${['null':'Seleccione una materia']}" optionKey="id" optionValue="apellido" ></g:select>

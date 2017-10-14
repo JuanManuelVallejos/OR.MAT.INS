@@ -12,7 +12,7 @@ class MateriaPorDocenteController {
     def index() { }
 
     def save(){
-        Integer horas= params.int('horas')
+        Integer horas= params.int('horas'+params.divisionId)
         Division divActual = divisionService.getDivisionById(params.divisionId)
         materiaPorDocenteService.agregarMateriaPorDocenteEnDivision(params.materiaId, params.docenteId, params.divisionId, horas)
 
@@ -24,8 +24,8 @@ class MateriaPorDocenteController {
 
     def deleteMateriaPorDocente(){
 
-        Division division = divisionService.getDivisionById(params.divisionId)
-        MateriaPorDocente materiaPorDocente = materiaPorDocenteService.getMateriaPorDocenteById(params.matXDocId)
+        Division division = divisionService.getDivisionById(request.JSON.divisionId)
+        MateriaPorDocente materiaPorDocente = materiaPorDocenteService.getMateriaPorDocenteById(request.JSON.materiaPorDocenteId)
         materiaPorDocenteService.eliminarMateriaPorDocente(materiaPorDocente)
 
         List<Materia> materiaList = materiaService.allMaterias

@@ -5,8 +5,11 @@
                 <div class="item">
                     <a data-toggle="collapse" data-parent="divisionesAccordion" href="#${division.id}" aria-expanded="false" aria-controls="${division.id}">
                         <div class="row">
-                            <div class="col col-md-10">
+                            <div class="col col-md-5">
                                 <h3>Division ${division.division}</h3>
+                            </div>
+                            <div class="col col-md-5">
+                                <h3>(${(division.asignaciones.min {it.hora}).hora} hs - ${(division.asignaciones.max {it.hora}).hora} hs)</h3>
                             </div>
                     </a>
                             <div class="col col-md-2">
@@ -20,7 +23,7 @@
                             </div>
                         </div>
                         <div id="${division.id}" class="collapse" role="tabpanel">
-                            <g:render template="/division/dataDivision" model="[divisionInstance: division, materias:materias, docentes: docentes, idDivision: division.id]"></g:render>
+                            <g:render template="/division/dataDivision" model="[divisionInstance: division, materias:materias, docentes: docentes, idDivision: division.id, horasCurbiertas: horasCubiertas]"></g:render>
                         </div>
                 </div>
             </li>
