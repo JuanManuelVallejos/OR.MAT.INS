@@ -111,7 +111,6 @@
                 return false;
             }
             if(sobrepasaHoras){
-                console.log("sobrepasa");
                 $('#msgErrorMateria'+idDivision).text('No puede asignar esta cantidad de horas ya que sobrepasa la cantidad de horas semanales.');
                 $('#errorAgregarMateriaDocente'+idDivision).css("display","");
                 return false;

@@ -44,4 +44,12 @@ class Division {
     def sobrepasaHorasAAsignar(cantidadHoras){
         horasAAsignarCubiertas + cantidadHoras > totalHorasAsignacion
     }
+
+    def getPrimerHora(){
+        asignaciones.min{it.hora}?.hora
+    }
+
+    def getUltimaHora(){
+        asignaciones.max {it.hora}?.hora
+    }
 }

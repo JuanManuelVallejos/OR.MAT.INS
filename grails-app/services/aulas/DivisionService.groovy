@@ -8,19 +8,24 @@ class DivisionService {
         Division.get(id)
     }
 
+    def getAllDivisiones(){
+        Division.all
+    }
+
     def saveDivision(String nombreDivision, Curso curso, horaInicial, cantidadHoras) {
         Division newDivision = new Division(division: nombreDivision, curso: curso)
         newDivision.save flush: true
         generateAsignaciones(newDivision, horaInicial, cantidadHoras)
-        newDivision
     }
 
     def generateAsignaciones(Division division,int horaInicial, int horas) {
+        println horas
         def dia = DiaSemana.LUNES
         for(i in 1..5){
             addAsignacionesPorDia(division,horaInicial, horas, dia)
             dia++
         }
+        division
     }
 
     def addAsignacionesPorDia(Division division, int horaInicial, int horas, DiaSemana dia){
@@ -40,4 +45,11 @@ class DivisionService {
         division.delete flush:true
     }
 
+    def getDivisionesSinCubrir(){
+        allDivisiones.findAll {!it.seCubrieronHorasAAsignar}
+    }
+
+    def getEstanCubiertasTodasLasDivisiones(){
+        return divisionesSinCubrir.empty
+    }
 }

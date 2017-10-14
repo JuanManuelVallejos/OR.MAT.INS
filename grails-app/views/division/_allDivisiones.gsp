@@ -9,7 +9,7 @@
                                 <h3>Division ${division.division}</h3>
                             </div>
                             <div class="col col-md-5">
-                                <h3>(${(division.asignaciones.min {it.hora}).hora} hs - ${(division.asignaciones.max {it.hora}).hora} hs)</h3>
+                                <h3>(${division.primerHora?: horaInicialTemporal} hs - ${division.ultimaHora?: horaFinalTemporal} hs)</h3>
                             </div>
                     </a>
                             <div class="col col-md-2">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div id="${division.id}" class="collapse" role="tabpanel">
-                            <g:render template="/division/dataDivision" model="[divisionInstance: division, materias:materias, docentes: docentes, idDivision: division.id, horasCurbiertas: horasCubiertas]"></g:render>
+                            <g:render template="/division/dataDivision" model="[divisionInstance: division, materias:materias, docentes: docentes, idDivision: division.id]"></g:render>
                         </div>
                 </div>
             </li>

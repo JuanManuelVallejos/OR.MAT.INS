@@ -26,15 +26,17 @@ class CursoController extends EditableController{
     }
 
     def addDivision(){
+        def horaInicialTemporal = params.int('horaInicial')
+        def cantidadHoras = params.int('cantidadHoras')
         Curso cursoInstance = cursoService.getCursoById(params.cursoId)
-        Division division = divisionService.saveDivision(params.nombreDivision, cursoInstance, params.int('horaInicial'), params.int('cantidadHoras'))
+        Division division = divisionService.saveDivision(params.nombreDivision, cursoInstance, horaInicialTemporal, cantidadHoras)
         cursoInstance.addToDivisiones(division)
         cursoService.saveCurso(cursoInstance)
         List<Materia> materiaList = materiaService.allMaterias
         List<Docente> docenteList = docenteService.allDocentes
-        List<Division> divisionesOrdenadas = cursoService.getAllDivisiones cursoInstance
-
-        render([template:'/division/allDivisiones', model: [divisionesOrdenadas: divisionesOrdenadas, docentes: docenteList, materias: materiaList, horasCubiertas: true]])
+        def divisionesOrdenadas  = cursoService.getAllDivisiones cursoInstance
+        def horaFinalTemporal = horaInicialTemporal + cantidadHoras - 1
+        render([template:'/division/allDivisiones', model: [divisionesOrdenadas: divisionesOrdenadas, docentes: docenteList, materias: materiaList, horaInicialTemporal: horaInicialTemporal,horaFinalTemporal: horaFinalTemporal]])
     }
 
     def edit(Curso cursoInstance) {

@@ -15,7 +15,6 @@ class CursoService {
         Curso.all.sort{ it.nombre }
     }
 
-    @Transactional(readOnly = true)
     def getAllDivisiones(Curso curso){
         curso.divisiones.sort { it.division }
     }
