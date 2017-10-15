@@ -13,7 +13,7 @@
 	<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 	<g:layoutHead/>
-	<g:javascript library="jquery" plugin="jquery"/>
+	<g:javascript library="jquery" plugin="jquery"/><r:require module="jquery-ui"/>
 	<g:javascript library="application"/>
 	<r:layoutResources />
 </head>
@@ -41,8 +41,9 @@
 				<li><g:link url="/aulas/administracion/index" >Administración</g:link></li>
 			</sec:ifAllGranted>
 			<sec:ifAllGranted roles="ROLE_DOCENTE">
-				<li><g:link controller="docente" action="show">Mi informacion</g:link></li>
+				<li><g:link controller="docente" action="show">Mi información</g:link></li>
 			</sec:ifAllGranted>
+			<li><g:link url="/aulas/administracion/seleccionarAsignacionDivision" >Asignación horarios</g:link></li>
 			<sec:ifLoggedIn>
 				<li><g:link controller="logout" action="index">Cerrar sesion</g:link></li>
 			</sec:ifLoggedIn>

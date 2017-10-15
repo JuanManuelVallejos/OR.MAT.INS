@@ -105,7 +105,7 @@
             var totalHorasAsignacion = parseInt(getTotalHorasAsignacion(idDivision));
             var sobrepasaHoras = horasAAsignarCubiertas + cantidadHorasAAdicionar > totalHorasAsignacion;
 
-            if(valorMateria == "null" && valorDocente == "null"){
+            if(valorMateria == "null" || valorDocente == "null"){
                 $('#msgErrorMateria'+idDivision).text('Debe seleccionar materia y docente');
                 $('#errorAgregarMateriaDocente'+idDivision).css("display","");
                 return false;

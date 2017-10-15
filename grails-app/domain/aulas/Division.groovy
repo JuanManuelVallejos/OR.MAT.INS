@@ -1,5 +1,7 @@
 package aulas
 
+import DTOs.TarjetaAsignacion
+
 class Division {
 
     String division
@@ -51,5 +53,20 @@ class Division {
 
     def getUltimaHora(){
         asignaciones.max {it.hora}?.hora
+    }
+
+    def getTarjetasAsignacion(){
+        List<TarjetaAsignacion> tarjetas = new ArrayList<TarjetaAsignacion>()
+        for (MateriaPorDocente matXDoc in materiasPorDocente){
+            for (i in 1..matXDoc.horasACubrir){
+                TarjetaAsignacion tarjeta = new TarjetaAsignacion()
+                tarjeta.materia = matXDoc.materia
+                tarjeta.docente = matXDoc.docente
+                tarjeta.idMateriaPorDocente = matXDoc.id
+                tarjeta.id = i
+                tarjetas.add(tarjeta)
+            }
+        }
+        return tarjetas
     }
 }

@@ -56,7 +56,7 @@ class MateriaPorDocenteController {
     }
 
     def buildOptionWith(key, value){
-        "<option value=\" ${key} \">${value}</option>"
+        "<option value=\"${key}\">${value}</option>"
     }
 
 }

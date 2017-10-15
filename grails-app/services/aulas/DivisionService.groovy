@@ -52,4 +52,5 @@ class DivisionService {
     def getEstanCubiertasTodasLasDivisiones(){
         return divisionesSinCubrir.empty
     }
+
 }
