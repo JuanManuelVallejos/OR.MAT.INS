@@ -10,12 +10,14 @@
         <thead>
         <tr>
             <th>Nombre</th>
-            <th>Acciones</th>
+            <g:if test="${!finalizoPlazo}">
+                <th>Acciones</th>
+            </g:if>
         </tr>
         </thead>
         <tbody>
         <g:each in="${instancias}" var="instancia">
-            <g:render template="/editable/nombreEditable" model="[instancia: instancia, accionLink: accionLink, instanciaEdicion: instanciaEdicion]"></g:render>
+            <g:render template="/editable/nombreEditable" model="[instancia: instancia, accionLink: accionLink, instanciaEdicion: instanciaEdicion, finalizoPlazo: finalizoPlazo]"></g:render>
         </g:each>
         </tbody>
     </table>

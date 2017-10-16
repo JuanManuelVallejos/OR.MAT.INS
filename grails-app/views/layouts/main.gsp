@@ -43,7 +43,9 @@
 			<sec:ifAllGranted roles="ROLE_DOCENTE">
 				<li><g:link controller="docente" action="show">Mi información</g:link></li>
 			</sec:ifAllGranted>
-			<li><g:link url="/aulas/administracion/seleccionarAsignacionDivision" >Asignación horarios</g:link></li>
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<li><g:link url="/aulas/administracion/seleccionarAsignacionDivision" >Asignación horarios</g:link></li>
+			</sec:ifAllGranted>
 			<sec:ifLoggedIn>
 				<li><g:link controller="logout" action="index">Cerrar sesion</g:link></li>
 			</sec:ifLoggedIn>

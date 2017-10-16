@@ -37,7 +37,9 @@
         </g:if>
         <g:else >
             <th>Docentes</th>
-            <th>Acciones</th>
+            <g:if test="${!finalizoPlazo}">
+                <th>Acciones</th>
+            </g:if>
         </g:else>
     </tr>
     </thead>
@@ -47,7 +49,7 @@
         </g:if>
         <g:else>
             <g:each in="${division.materiasPorDocente}" var="materiaHorasDocente">
-                <g:render template="/materiaPorDocente/filaMateriaPorDocente" model="[materiaPorDocente:materiaHorasDocente, division: division]"/>
+                <g:render template="/materiaPorDocente/filaMateriaPorDocente" model="[materiaPorDocente:materiaHorasDocente, division: division, finalizoPlazo: finalizoPlazo]"/>
             </g:each>
         </g:else>
     </tbody>

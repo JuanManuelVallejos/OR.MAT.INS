@@ -9,16 +9,21 @@ class AdministracionController {
     def cursoService
 
     def index() {
-        render(view: 'index')
+        render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo])
     }
 
     def finalizarPlazo(){
         if(!divisionService.estanCubiertasTodasLasDivisiones){
-            render(view: 'index', model: [divisionesSinCubrir: divisionService.divisionesSinCubrir])
+            render(view: 'index', model: [divisionesSinCubrir: divisionService.divisionesSinCubrir, finalizarPlazo: parametroSistemaService.finalizoPlazo])
         }else{
             parametroSistemaService.setPlazoFinalizado()
-            render(view: 'index')
+            render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo])
         }
+    }
+
+    def extenderPlazo(){
+        parametroSistemaService.setExtenderPlazo()
+        render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo])
     }
 
     def seleccionarAsignacionDivision(){

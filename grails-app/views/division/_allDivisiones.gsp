@@ -12,6 +12,7 @@
                                 <h3>(${division.primerHora?: horaInicialTemporal} hs - ${division.ultimaHora?: horaFinalTemporal} hs)</h3>
                             </div>
                     </a>
+                    <g:if test="${!finalizoPlazo}">
                             <div class="col col-md-2">
                                 <br />
                                 <g:uploadForm name="deleteForm" controller="division" action="eliminar">
@@ -21,9 +22,11 @@
                                     </button>
                                 </g:uploadForm>
                             </div>
-                        </div>
+                    </g:if>
+                    </div>
+
                         <div id="${division.id}" class="collapse" role="tabpanel">
-                            <g:render template="/division/dataDivision" model="[divisionInstance: division, materias:materias, docentes: docentes, idDivision: division.id]"></g:render>
+                            <g:render template="/division/dataDivision" model="[divisionInstance: division, materias:materias, docentes: docentes, idDivision: division.id, finalizoPlazo: finalizoPlazo]"></g:render>
                         </div>
                 </div>
             </li>

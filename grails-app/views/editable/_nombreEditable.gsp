@@ -11,17 +11,19 @@
             </label>
         </g:else>
     </td>
-    <g:if test="${instanciaEdicion?.id == instancia?.id}">
-        <td style="align-content: right">
-            <div class="row">
-                <g:submitButton id="grabar${instancia?.id}" class="btn btn-success" name="Grabar" value="Grabar" onclick="setHiddens(${instancia?.id},${instancia?.id})"/>
-                <g:submitButton class="btn btn-default" onsubmit="break" name="Cancelar" />
-            </div>
-        </td>
+    <g:if test="${!finalizoPlazo}">
+        <g:if test="${instanciaEdicion?.id == instancia?.id}">
+            <td style="align-content: right">
+                <div class="row">
+                    <g:submitButton id="grabar${instancia?.id}" class="btn btn-success" name="Grabar" value="Grabar" onclick="setHiddens(${instancia?.id},${instancia?.id})"/>
+                    <g:submitButton class="btn btn-default" onsubmit="break" name="Cancelar" />
+                </div>
+            </td>
+        </g:if>
+        <g:else>
+            <td style="align-content: left">
+                <g:submitButton class="btn btn-default" name="Edit" value="Editar" onclick="setHiddens(${instancia?.id},${instanciaEdicion})"></g:submitButton>
+            </td>
+        </g:else>
     </g:if>
-    <g:else>
-        <td style="align-content: left">
-            <g:submitButton class="btn btn-default" name="Edit" value="Editar" onclick="setHiddens(${instancia?.id},${instanciaEdicion})"></g:submitButton>
-        </td>
-    </g:else>
 </tr>

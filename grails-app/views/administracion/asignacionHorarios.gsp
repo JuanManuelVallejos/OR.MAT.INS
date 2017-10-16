@@ -6,12 +6,14 @@
         <style>
             .intro {
                 background-color: blue;
-                width:100 ;
             }
         </style>
         <script>
             $( function() {
                 $("i[id^='draggable']").draggable({ revert: "invalid"});
+                $("ul[id^='droppable']").droppable({
+
+                });
                 $("td[id^='droppable']").droppable({
                     classes: {
                         "ui-droppable-active": "ui-state-active",
@@ -41,7 +43,7 @@
                                         top: (pos.top+(height*0.1)) + "px",
                                         left: (pos.left + (width*1.05)) + "px"
                                     });
-                                    $(idDroppable).html(data.result);
+                                    //$(idDroppable).html(data.result);
                                 }
                             ],
                             error:[

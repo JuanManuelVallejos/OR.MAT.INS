@@ -19,22 +19,29 @@
 </div>
 <br />
 <div class="row">
-    <div class="col-md-6">
+    <g:if test="${!finalizoPlazo}">
+        <div class="col-md-6">
+    </g:if>
+    <g:else>
+        <div class="col-md-4">
+    </g:else>
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h2 class="panel-title">${titulo}s registradas</h2>
             </div>
             <g:formRemote name="upCambiarModo" url="[action:'SetEditableOActualizar']" update="allTabla">
                 <div id="allTabla">
-                    <g:render template="/editable/tablaEditable" model="[instancias: instancias, accionLink: accionLink, instanciaEdicion: instanciaEdicion, instancia: instancia]" />
+                    <g:render template="/editable/tablaEditable" model="[instancias: instancias, accionLink: accionLink, instanciaEdicion: instanciaEdicion, instancia: instancia, finalizoPlazo: finalizoPlazo]" />
                 </div>
             </g:formRemote>
-            <div class="panel-footer">
-                <g:formRemote name="agregarInstancia" url="[action:'save']" action="save" update="allTabla">
-                    <g:textField id="inputNombre" name="nombre" placeholder="Nombre de ${titulo}" value="${instanciaNueva?.nombre}" maxlength="50"></g:textField>
-                    <g:submitButton class="btn btn-success" name="save" value="Agregar" />
-                </g:formRemote>
-            </div>
+            <g:if test="${!finalizoPlazo}">
+                <div class="panel-footer">
+                    <g:formRemote name="agregarInstancia" url="[action:'save']" action="save" update="allTabla">
+                        <g:textField id="inputNombre" name="nombre" placeholder="Nombre de ${titulo}" value="${instanciaNueva?.nombre}" maxlength="50"></g:textField>
+                        <g:submitButton class="btn btn-success" name="save" value="Agregar" />
+                    </g:formRemote>
+                </div>
+            </g:if>
         </div>
     </div>
 </div>

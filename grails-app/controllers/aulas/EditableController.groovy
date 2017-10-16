@@ -2,6 +2,8 @@ package aulas
 
 abstract class EditableController {
 
+    def parametroSistemaService
+
     abstract def saveInstancia(instancia)
 
     abstract def getInstanciaById(id)
@@ -15,9 +17,11 @@ abstract class EditableController {
     abstract def getLink()
 
     def index() {
+        def finalizoPlazo = parametroSistemaService.finalizoPlazo
         render([view: '/editable/grillaEditable', model:
                 [instancias: allInstancias(),
-                 titulo    : getTitulo(), accionLink: getLink()]])
+                 titulo    : getTitulo(), accionLink: getLink(),
+                 finalizoPlazo: finalizoPlazo]])
     }
 
     def SetEditableOActualizar() {

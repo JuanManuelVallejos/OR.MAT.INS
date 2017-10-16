@@ -127,19 +127,20 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'seguridad.User
 grails.plugin.springsecurity.authority.className = 'seguridad.Role'
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/**':                     ['permitAll'],
-	'/index':                  ['permitAll'],
-	'/index.gsp':              ['permitAll'],
-    '/assets/**':              ['permitAll'],
-    '/**/js/**':               ['permitAll'],
-    '/**/css/**':              ['permitAll'],
-    '/**/images/**':           ['permitAll'],
-    '/**/favicon.ico':         ['permitAll'],
-    '/docente/create':         ['ROLE_ADMIN'],
-    '/docente/index':          ['ROLE_ADMIN'],
-    '/curso/**':               ['ROLE_ADMIN'],
-    '/materia/**':             ['ROLE_ADMIN'],
-    '/administracion/index':   ['ROLE_ADMIN'],
-    '/docente/show':           ['ROLE_DOCENTE']
+	'/**':                                             ['permitAll'],
+	'/index':                                          ['permitAll'],
+	'/index.gsp':                                      ['permitAll'],
+    '/assets/**':                                      ['permitAll'],
+    '/**/js/**':                                       ['permitAll'],
+    '/**/css/**':                                      ['permitAll'],
+    '/**/images/**':                                   ['permitAll'],
+    '/**/favicon.ico':                                 ['permitAll'],
+    '/docente/create':                                 ['ROLE_ADMIN'],
+    '/docente/index':                                  ['ROLE_ADMIN'],
+    '/curso/**':                                       ['ROLE_ADMIN'],
+    '/materia/**':                                     ['ROLE_ADMIN'],
+    '/administracion/index':                           ['ROLE_ADMIN'],
+    '/administracion/seleccionarAsignacionDivision':   ['ROLE_ADMIN'],
+    '/docente/show':                                   ['ROLE_DOCENTE']
 ]
 

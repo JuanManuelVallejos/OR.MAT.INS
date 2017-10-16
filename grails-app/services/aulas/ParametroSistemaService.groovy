@@ -7,7 +7,7 @@ class ParametroSistemaService {
 
     static CONSTANTE_FINALIZACION = "PLAZO_INICIALIZACION_FINALIZADO"
 
-    def getParametro(clave){
+    ParametroSistema getParametro(clave){
         ParametroSistema.findByClave(clave)
     }
 
@@ -28,8 +28,12 @@ class ParametroSistemaService {
         saveOrUpdate(CONSTANTE_FINALIZACION, true)
     }
 
+    def setExtenderPlazo(){
+        saveOrUpdate(CONSTANTE_FINALIZACION, false)
+    }
+
     def getFinalizoPlazo(){
-        getParametro(CONSTANTE_FINALIZACION)
+        getParametro(CONSTANTE_FINALIZACION).valor.toBoolean()
     }
 
 }

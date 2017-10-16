@@ -129,25 +129,27 @@
     </div>
 <br/>
 <br/>
-<div class="row">
-    <div class="col-md-8">
-        <div class="panel panel-success">
-            <div class="panel panel-heading">Agregar division</div>
-            <div class="panel-body">
-                <g:formRemote name="addDivision" url="[controller:'curso', action:'addDivision']" update="allDivisiones">
-                    <g:render template="/division/form"></g:render>
-                    <g:hiddenField name="cursoId" value="${cursoInstance.id}" />
-                    <g:submitButton class="btn btn-success" name="save" value="Agregar nueva división" />
-                </g:formRemote>
+<g:if test="${!finalizoPlazo}">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-success">
+                <div class="panel panel-heading">Agregar division</div>
+                <div class="panel-body">
+                    <g:formRemote name="addDivision" url="[controller:'curso', action:'addDivision']" update="allDivisiones">
+                        <g:render template="/division/form"></g:render>
+                        <g:hiddenField name="cursoId" value="${cursoInstance.id}" />
+                        <g:submitButton class="btn btn-success" name="save" value="Agregar nueva división" />
+                    </g:formRemote>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</g:if>
 <br />
 <div class="row">
     <div class="col-md-12">
         <div id="allDivisiones">
-            <g:render template="/division/allDivisiones" model="[divisionesOrdenadas: divisionesOrdenadas, materias: materias, docentes: docentes]" />
+            <g:render template="/division/allDivisiones" model="[divisionesOrdenadas: divisionesOrdenadas, materias: materias, docentes: docentes, finalizoPlazo: finalizoPlazo]" />
         </div>
     </div>
 </div>
