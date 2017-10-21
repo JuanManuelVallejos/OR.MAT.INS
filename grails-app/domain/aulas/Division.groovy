@@ -56,6 +56,7 @@ class Division {
     }
 
     def getTarjetasAsignacion(){
+        def idTarjeta = 0
         List<TarjetaAsignacion> tarjetas = new ArrayList<TarjetaAsignacion>()
         for (MateriaPorDocente matXDoc in materiasPorDocente){
             for (i in 1..matXDoc.horasACubrir){
@@ -63,10 +64,15 @@ class Division {
                 tarjeta.materia = matXDoc.materia
                 tarjeta.docente = matXDoc.docente
                 tarjeta.idMateriaPorDocente = matXDoc.id
-                tarjeta.id = i
+                tarjeta.id = idTarjeta
+                idTarjeta++
                 tarjetas.add(tarjeta)
             }
         }
         return tarjetas
+    }
+
+    def getAsignacionHecha(){
+        asignaciones.first().docente != null
     }
 }

@@ -21,7 +21,12 @@
                         <ul>
                             <g:each in="${curso.divisiones}" var="division">
                                 <li>
-                                    <g:link id="${division.id}" action="asignacionHorarios"  style="color: green">${division.division}</g:link>
+                                    <g:if test="${division.asignacionHecha}">
+                                        <g:link id="${division.id}" action="viewResultadosAsignacion"  style="color: green">${division.division}</g:link>
+                                    </g:if>
+                                    <g:else>
+                                        <g:link id="${division.id}" action="asignacionHorarios"  style="color: green">${division.division}</g:link>
+                                    </g:else>
                                 </li>
                             </g:each>
                         </ul>
