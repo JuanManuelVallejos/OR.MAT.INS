@@ -31,9 +31,6 @@
                                 function(data) {
 
                                 }
-                            ],
-                            error:[
-                                function(data) { }
                             ]
                         })
                     }
@@ -78,9 +75,6 @@
                                         left: leftInPixels
                                     });
                                 }
-                            ],
-                            error:[
-                                function(data) { }
                             ]
                         })
                     },
@@ -107,7 +101,7 @@
                     type: 'POST',
                     contentType: 'application/json; charset=utf-8',
                     cache: false,
-                    async: true,
+                    async: false,
                     success:[
                         function(data) {
                             retorno = (data.result == 'true');

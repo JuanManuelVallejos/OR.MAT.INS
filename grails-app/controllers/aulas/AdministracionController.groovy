@@ -45,8 +45,7 @@ class AdministracionController {
         tar.dia = (request.JSON.dia as DiaSemana)
 
         render(contentType: 'text/json') {[
-                'result': "Docente: ",
-                'status': result ? "OK" : "Nothing present"
+                'status': "OK"
         ]}
     }
 
@@ -56,8 +55,7 @@ class AdministracionController {
         tar.dia = null
 
         render(contentType: 'text/json') {[
-                'result': "Docente: ",
-                'status': result ? "OK" : "Nothing present"
+                'status': "OK"
         ]}
     }
 

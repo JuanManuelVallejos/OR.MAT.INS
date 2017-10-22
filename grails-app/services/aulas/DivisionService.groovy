@@ -19,7 +19,6 @@ class DivisionService {
     }
 
     def generateAsignaciones(Division division,int horaInicial, int horas) {
-        println horas
         def dia = DiaSemana.LUNES
         for(i in 1..5){
             addAsignacionesPorDia(division,horaInicial, horas, dia)
