@@ -96,6 +96,27 @@
             return retorno;
         }
 
+        function getExisteMateriaParaDivision(divisionID, materiaID) {
+            var retorno;
+            $.ajax({
+              url: '${createLink(controller: 'division', action: 'getExisteMateriaParaDivision')}',
+              type: 'POST',
+              contentType: 'application/json; charset=utf-8',
+              data: JSON.stringify({ divisionID:  divisionID, materiaID: materiaID}),
+              cache: false,
+              async: false,
+              success:[
+                    function(data) {
+                        retorno = data.result;
+                    }
+                ],
+                error:[
+                    function(data) { alert(data) }
+                ]
+            })
+            return retorno;
+        }
+
         function validateMateriaPorDocenteNuevo(idDivision) {
             var valorMateria = $('#selectMaterias'+idDivision).val();
             var valorDocente = $('#selectDocentes'+idDivision).val();
@@ -104,6 +125,9 @@
             var horasAAsignarCubiertas = parseInt(getHorasAAsignarCubiertas(idDivision));
             var totalHorasAsignacion = parseInt(getTotalHorasAsignacion(idDivision));
             var sobrepasaHoras = horasAAsignarCubiertas + cantidadHorasAAdicionar > totalHorasAsignacion;
+            var yaExisteMateria = getExisteMateriaParaDivision(idDivision, valorMateria);
+
+            alert(yaExisteMateria);
 
             if(valorMateria == "null" || valorDocente == "null"){
                 $('#msgErrorMateria'+idDivision).text('Debe seleccionar materia y docente');
@@ -115,6 +139,12 @@
                 $('#errorAgregarMateriaDocente'+idDivision).css("display","");
                 return false;
             }
+            if(yaExisteMateria){
+                $('#msgErrorMateria'+idDivision).text('Verifique que la materia no se haya ingresado previamente');
+                $('#errorAgregarMateriaDocente'+idDivision).css("display","");
+                return false;
+            }
+
             $('#errorAgregarMateriaDocente'+idDivision).css("display","none");
             return true;
         }

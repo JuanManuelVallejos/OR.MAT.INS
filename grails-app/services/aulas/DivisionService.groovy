@@ -52,4 +52,8 @@ class DivisionService {
         return divisionesSinCubrir.empty
     }
 
+    def existeEnDivisionMateriaConId(Division division, idMateria){
+        division.materiasPorDocente.findAll{ it.materia.id == (idMateria as int) }.size() > 0
+    }
+
 }

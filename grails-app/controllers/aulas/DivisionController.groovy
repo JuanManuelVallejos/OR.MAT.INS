@@ -47,4 +47,13 @@ class DivisionController {
         ]}
     }
 
+    def getExisteMateriaParaDivision(){
+        Division division = divisionService.getDivisionById(request.JSON.divisionID)
+        boolean existe = divisionService.existeEnDivisionMateriaConId(division, request.JSON.materiaID)
+        render(contentType: 'text/json') {[
+                'result': existe,
+                'status': result ? "OK" : "Nothing present"
+        ]}
+    }
+
 }

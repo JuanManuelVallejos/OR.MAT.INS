@@ -13,7 +13,9 @@
                 <p style="font-size: 100%">No puede finalizar el plazo de ingreso de datos.Las siguientes divisiones estan incompletas:</p>
                 <ul>
                     <g:each in="${divisionesSinCubrir}" var="division">
-                        <li>Curso: ${division.curso.nombre} - Division: ${division.division}</li>
+                        <li>
+                            <g:link controller="curso" action="show" id="${division.curso.id}" style="color:red">Curso: ${division.curso.nombre} - Division: ${division.division}</g:link>
+                        </li>
                     </g:each>
                 </ul>
             </div>

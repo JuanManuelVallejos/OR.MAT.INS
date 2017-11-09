@@ -64,9 +64,53 @@ class Division {
                 tarjeta.materia = matXDoc.materia
                 tarjeta.docente = matXDoc.docente
                 tarjeta.idMateriaPorDocente = matXDoc.id
+                if(idTarjeta == 0){
+                    tarjeta.hora = 10
+                    tarjeta.dia = "LUNES"
+                }
                 tarjeta.id = idTarjeta
                 idTarjeta++
                 tarjetas.add(tarjeta)
+            }
+        }
+        return tarjetas
+    }
+
+    def getTarjetasSinAsignar(){
+        def idTarjeta = 0
+        List<TarjetaAsignacion> tarjetas = new ArrayList<TarjetaAsignacion>()
+        for(MateriaPorDocente matXDoc in materiasPorDocente){
+            for (i in 1..matXDoc.horasACubrir) {
+                if(!asignaciones.find {it.docente == matXDoc.docente}){
+                    TarjetaAsignacion tarjeta = new TarjetaAsignacion()
+                    tarjeta.materia = matXDoc.materia
+                    tarjeta.docente = matXDoc.docente
+                    tarjeta.idMateriaPorDocente = matXDoc.id
+                    tarjeta.id = idTarjeta
+                    idTarjeta++
+                    tarjetas.add(tarjeta)
+                }
+
+            }
+        }
+        return tarjetas
+    }
+
+    def getTarjetasAsignadas(){
+        def idTarjeta = 0
+        List<TarjetaAsignacion> tarjetas = new ArrayList<TarjetaAsignacion>()
+        for(MateriaPorDocente matXDoc in materiasPorDocente){
+            for (i in 1..matXDoc.horasACubrir) {
+                if(asignaciones.find {it.docente == matXDoc.docente}){
+                    TarjetaAsignacion tarjeta = new TarjetaAsignacion()
+                    tarjeta.materia = matXDoc.materia
+                    tarjeta.docente = matXDoc.docente
+                    tarjeta.idMateriaPorDocente = matXDoc.id
+                    tarjeta.id = idTarjeta
+                    idTarjeta++
+                    tarjetas.add(tarjeta)
+                }
+
             }
         }
         return tarjetas
