@@ -55,7 +55,7 @@
                 var dia = $('#selectDia').val();
                 var horaInicio = $('#horaInicial').val();
                 var horaFinal = $('#horaFinal').val();
-                if(validateAgregarDia(dia) && validateHoras(horaInicio, horaFinal)){
+                if(validateAgregarDia(dia)){
                     var URL='${createLink(controller: 'docente', action: 'agregarDisponibilidad')}';
                     $.ajax({
                         url: URL,
@@ -71,8 +71,12 @@
                             }
                         ],
                         error:[
-                            function(data) {  }
-                        ]
+                            function(data) {
+                                var divError = 'errorDiaNoIngresado';
+                                var msg = 'msgErrorDias';
+                                validateElement("null", divError, msg, data.responseText);
+                            }
+                        ],
                     })
                 }
             }
@@ -103,24 +107,6 @@
 
             function validateAgregarDia(dia){
                 return validateElement(dia, 'errorDiaNoIngresado', 'msgErrorDias', 'Debe seleccionar el día');
-            }
-
-            function validateHoras(horaInicial, horaFinal){
-                var divError = 'errorDiaNoIngresado';
-                var msg = 'msgErrorDias';
-                if(horaInicial < 0 || horaInicial > 24){
-                    validateElement("null",divError,msg, 'La hora inicial debe estar entre 0 y 24');
-                    return false;
-                }
-                if(horaFinal < 0 || horaFinal > 24){
-                    validateElement("null",divError,msg, 'La hora final debe estar entre 0 y 24');
-                    return false;
-                }
-                if(horaInicial >= horaFinal){
-                    validateElement("null",divError,msg, 'El horario inicial no puede ser mayor o igual que el horario final');
-                    return false;
-                }
-                return true;
             }
 
             function validateElement(element, msgdiv, msgLbl, msg){

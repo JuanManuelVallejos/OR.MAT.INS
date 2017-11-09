@@ -16,10 +16,10 @@
                         <g:select id="selectDia" class="selectpicker show-menu-arrow" name="dia" from="${aulas.DiaSemana.values()}" noSelection="${['null':'Seleccione un día']}" />
                     </div>
                     <div class="col-md-3">
-                        <g:textField name="horaInicial" placeholder="Hora inicial" required="required"></g:textField>
+                        <g:field type="number" name="horaInicial" placeholder="Hora inicial" required="required"></g:field>
                     </div>
                     <div class="col-md-3">
-                        <g:textField name="horaFinal" placeholder="Hora final" required="required"></g:textField>
+                        <g:field type="number" name="horaFinal" placeholder="Hora final" required="required"></g:field>
                     </div>
                     <div class="col-md-3">
                         <g:submitButton name="agregarDisponibilidad" class="btn btn-success" value="Agregar disponibilidad" onclick="javascript:addDisponibilidad(${docenteInstance.id})"></g:submitButton>

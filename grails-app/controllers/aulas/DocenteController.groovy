@@ -1,4 +1,5 @@
 package aulas
+
 import seguridad.User
 
 class DocenteController {
@@ -114,13 +115,31 @@ class DocenteController {
         redirect (action:'show')
     }
 
+    def validarDisponibilidad(horaInicio, horaFinal){
+        if(horaInicio < 0 || horaFinal > 24)
+            return "La hora inicial debe estar entre 0 y 24"
+        if(horaFinal < 0 || horaFinal > 24)
+            return "La hora final debe estar entre 0 y 24"
+        if(horaInicio >= horaFinal)
+            return "El horario inicial no puede ser mayor o igual que el horario final"
+        return null
+    }
+
     def agregarDisponibilidad(){
         def dia = request.JSON.diaSemana
-        def horaInicio = request.JSON.horaInicio
-        def horaFinal = request.JSON.horaFinal
-        Docente docente = docenteService.getDocenteById(request.JSON.docenteID)
-        docenteService.agregarDisponibilidad(docente, dia, horaInicio, horaFinal)
-        render(template: 'disponibilidad', model:[docenteInstance: docente])
+        def horaInicio = request.JSON.horaInicio as int
+        def horaFinal = request.JSON.horaFinal as int
+
+        //No deberia pasar ya que el js lo evita
+        def validacion = validarDisponibilidad(horaInicio, horaFinal)
+        if(validacion != null){
+            render(status:500, text: validacion ,contentType: 'application/json')
+        }
+        else{
+            Docente docente = docenteService.getDocenteById(request.JSON.docenteID)
+            docenteService.agregarDisponibilidad(docente, dia, horaInicio, horaFinal)
+            render(template: 'disponibilidad', model:[docenteInstance: docente])
+        }
     }
 
     def eliminarDisponibilidad(){
