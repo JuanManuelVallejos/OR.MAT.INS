@@ -78,7 +78,9 @@ class AdministracionController {
     }
 
     def docentePuedeEnHorario(){
-        def puede = asignacionService.docenteTieneMateriaAsignadaEnDiaYHora(tarjetaActual.docente,(request.JSON.dia as DiaSemana),request.JSON.hora)
+        def puede = true
+        if(tarjetaActual.docente)
+            puede = asignacionService.docenteTieneMateriaAsignadaEnDiaYHora(tarjetaActual.docente,(request.JSON.dia as DiaSemana),request.JSON.hora)
         render(contentType: 'text/json') {[
                 'result': puede as boolean,
                 'status': result ? "OK" : "Nothing present"
