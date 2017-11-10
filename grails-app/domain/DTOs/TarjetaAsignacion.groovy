@@ -7,6 +7,7 @@ class TarjetaAsignacion {
     Docente docente
     Materia materia
     DiaSemana dia
+    String disponibilidad
     Integer hora
     def idMateriaPorDocente
 }

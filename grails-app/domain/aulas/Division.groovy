@@ -64,10 +64,7 @@ class Division {
                 tarjeta.materia = matXDoc.materia
                 tarjeta.docente = matXDoc.docente
                 tarjeta.idMateriaPorDocente = matXDoc.id
-                if(idTarjeta == 0){
-                    tarjeta.hora = 10
-                    tarjeta.dia = "LUNES"
-                }
+                tarjeta.disponibilidad = matXDoc.docente.disponibilidadParaTarjeta
                 tarjeta.id = idTarjeta
                 idTarjeta++
                 tarjetas.add(tarjeta)

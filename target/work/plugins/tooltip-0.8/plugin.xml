@@ -1,0 +1,23 @@
+<plugin name='tooltip' version='0.8' grailsVersion='2.0 &gt; *'>
+  <author>Sven Lange</author>
+  <authorEmail>email@svenlange.co.za</authorEmail>
+  <title>Tooltip Plugin</title>
+  <description>This plugin provides a lightweight and lightning fast tooltip that is very easy to use.</description>
+  <documentation>http://grails.org/plugin/tooltip</documentation>
+  <type>TooltipGrailsPlugin</type>
+  <resources>
+    <resource>za.co.svenlange.grails.plugins.tooltip.ExampleController</resource>
+    <resource>org.grails.tooltip.TooltipPluginTagLib</resource>
+  </resources>
+  <repositories>
+    <repository name='grailsCentral' url='http://plugins.grails.org' />
+    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+  </repositories>
+  <dependencies />
+  <plugins />
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>

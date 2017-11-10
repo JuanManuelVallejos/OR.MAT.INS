@@ -144,4 +144,4 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/administracion/pruebaDrag':   ['permitAll'],
     '/docente/show':                                   ['ROLE_DOCENTE']
 ]
-
+tooltip.defaultStyle="myTooltipStyles"

@@ -89,5 +89,8 @@ grails.project.dependency.resolution = {
 
         //Bootstrap
         compile "org.grails.plugins:twitter-bootstrap:3.3.4"
+
+        //Tooltip
+        compile ':tooltip:0.8'
     }
 }

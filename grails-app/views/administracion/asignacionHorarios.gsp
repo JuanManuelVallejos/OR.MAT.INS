@@ -1,6 +1,8 @@
 <html>
 <head>
     <g:set var="seFinalizoPlazo" value="${true}" scope="request"/>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'asignacion.css')}" type="text/css">
+    <tooltip:resources stylesheet="myTooltipStyles"/>
     <meta name="layout" content="main">
     <g:javascript src="jquery-drdr.js" />
     <g:javascript src="jqueryui-drdr.js" />
@@ -130,10 +132,13 @@
                         <ul id="droppContainer" style="background-color: #d6e9c6; border-radius: 15px" class="list-group">
                             <g:each in="${tarjetas}" var="tarjeta">
                                 <br />
-                                <i id="dragg${tarjeta.id}" class="btn btn-success ui-widget-header" style="z-index: 1; width: 97%; height: 10%; border-radius: 10px; background-color: #5cb85c">
-                                    <p style="font-size: 100%"><b>${tarjeta.materia.nombre}</b></p>
-                                    <p style="font-size: 100%">${tarjeta.docente.apellido}</p>
-                                </i>
+                                    <i id="dragg${tarjeta.id}" class="btn btn-success ui-widget-header" style="z-index: 1; width: 97%; height: 10%; border-radius: 10px; background-color: #5cb85c" onmouseover="tooltip.show('${tarjeta.disponibilidad}');" onmouseout="tooltip.hide();">
+                                        <span style="font-size: 100%"><b>${tarjeta.materia.nombre}</b></span><br/>
+                                        <!-- <g:each in="${tarjeta.disponibilidad.split('_')}" var="hora">
+                                            <span style="font-size: 50%">${hora}</span><br style="margin-top: 1%"/>
+                                        </g:each> -->
+                                        <span style="font-size: 100%">${tarjeta.docente.apellido}</span><br/>
+                                    </i>
                             </g:each>
                         </ul>
                     </div>

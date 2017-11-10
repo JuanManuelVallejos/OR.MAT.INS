@@ -32,4 +32,25 @@ class Docente {
         titulos = new ArrayList<DocumentoRespaldatorio>()
     }
 
+    def getHorariosDeDia(DiaSemana dia){
+        String horarios = ""
+        List<Disponibilidad> disponibilidadesOrdenadas = disponibilidades.findAll {it.dia.equals(dia)}.sort {it.horaInicial}
+        for(Disponibilidad disponibilidad in disponibilidadesOrdenadas){
+            horarios += disponibilidad.horaInicial+"-"+disponibilidad.horaFinal+";"
+        }
+        if(horarios.isEmpty())
+            return "Todo el día"
+        horarios
+    }
+
+    def getDisponibilidadParaTarjeta(){
+        String disponibilidad = "<b>Disponibilidad</b> <br/>"
+        def dia = DiaSemana.LUNES
+        for(i in 1..5){
+            disponibilidad += dia.toString().take(2)+": "+getHorariosDeDia(dia)+"<br/>"
+            dia++
+        }
+        disponibilidad
+    }
+
 }
