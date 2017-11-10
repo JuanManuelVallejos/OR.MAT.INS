@@ -1,5 +1,7 @@
 <html>
     <head>
+        <g:set var="seFinalizoPlazo" value="${true}" scope="request"/>
+        <g:set var="finalizoAsignacion" value="${true}" scope="request"/>
         <meta name="layout" content="main" />
     </head>
     <body>

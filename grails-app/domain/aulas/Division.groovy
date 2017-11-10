@@ -116,4 +116,13 @@ class Division {
     def getAsignacionHecha(){
         asignaciones.first().docente != null
     }
+
+    def getAsignacionesIncompletas(){
+        asignaciones.findAll { it.docente == null }
+    }
+
+    def getAsignacionesFueronCompletas(){
+        asignacionesIncompletas.size() == 0
+    }
+
 }

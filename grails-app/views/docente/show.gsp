@@ -1,6 +1,7 @@
 <html>
     <head>
-        <g:set var="SOMEVARIABLE" value="${true}" scope="request"/>
+        <g:set var="seFinalizoPlazo" value="${seFinalizoPlazo}" scope="request"/>
+        <g:set var="finalizoAsignacion" value="${finalizoAsignacion}" scope="request"/>
         <meta name="layout" content="main"/>
         <r:script>
             $('#formNotSubmit').submit(function () {

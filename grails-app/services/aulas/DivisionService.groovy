@@ -56,4 +56,12 @@ class DivisionService {
         division.materiasPorDocente.findAll{ it.materia.id == (idMateria as int) }.size() > 0
     }
 
+    def getDivisionesSinAsignar(){
+        allDivisiones.findAll { it.asignacionesIncompletas}
+    }
+
+    def getSeAsignaronTodasDivisiones(){
+        return divisionesSinAsignar.size() == 0
+    }
+
 }

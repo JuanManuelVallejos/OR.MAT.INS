@@ -1,6 +1,7 @@
 <html>
 <head>
     <g:set var="seFinalizoPlazo" value="${true}" scope="request"/>
+    <g:set var="finalizoAsignacion" value="${false}" scope="request"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'asignacion.css')}" type="text/css">
     <tooltip:resources stylesheet="myTooltipStyles"/>
     <meta name="layout" content="main">

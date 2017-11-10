@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<g:set var="seFinalizoPlazo" value="${finalizoPlazo}" scope="request"/>
+	<g:set var="finalizoAsignacion" value="${finalizoAsignacion}" scope="request"/>
 	<meta name="layout" content="main">
 	<r:require modules="bootstrap"/>
 </head>

@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 class ParametroSistemaService {
 
     static CONSTANTE_FINALIZACION = "PLAZO_INICIALIZACION_FINALIZADO"
-
+    static CONSTANTE_ASIGNACION_FINALIZADA = "ASIGNACION_FINALIZADA"
     ParametroSistema getParametro(clave){
         ParametroSistema.findByClave(clave)
     }
@@ -36,4 +36,15 @@ class ParametroSistemaService {
         getParametro(CONSTANTE_FINALIZACION).valor.toBoolean()
     }
 
+    def setAsignacionesFinalizadas(){
+        saveOrUpdate(CONSTANTE_ASIGNACION_FINALIZADA, true)
+    }
+
+    def getFinalizoAsignacion(){
+        getParametro(CONSTANTE_ASIGNACION_FINALIZADA).valor.toBoolean()
+    }
+
+    def setExtenderAsignacion(){
+        saveOrUpdate(CONSTANTE_ASIGNACION_FINALIZADA, false)
+    }
 }

@@ -12,25 +12,43 @@ class AdministracionController {
     static tarjetaInstances = new ArrayList<TarjetaAsignacion>()
 
     def index() {
-        render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo])
+        render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
     }
 
     def finalizarPlazo(){
         if(!divisionService.estanCubiertasTodasLasDivisiones){
-            render(view: 'index', model: [divisionesSinCubrir: divisionService.divisionesSinCubrir, finalizarPlazo: parametroSistemaService.finalizoPlazo])
+            render(view: 'index', model: [divisionesSinCubrir: divisionService.divisionesSinCubrir, finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
         }else{
             parametroSistemaService.setPlazoFinalizado()
-            render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo])
+            render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
         }
     }
 
     def extenderPlazo(){
         parametroSistemaService.setExtenderPlazo()
-        render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo])
+        render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
+    }
+
+    def extenderAsignacion(){
+        parametroSistemaService.setExtenderAsignacion()
+        render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
+    }
+
+    def finalizarAsignaciones(){
+        if(!divisionService.seAsignaronTodasDivisiones){
+            render(view: 'index', model: [divisionesSinAsignar: divisionService.divisionesSinAsignar, finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
+        }else{
+            parametroSistemaService.setAsignacionesFinalizadas()
+            render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
+        }
     }
 
     def seleccionarAsignacionDivision(){
         render(view: 'seleccionarAsignacionDivision', model:[cursos: cursoService.allCursos])
+    }
+
+    def seleccionarResultadoDivision(){
+        render(view: 'seleccionarResultadoDivision', model:[cursos: cursoService.allCursos])
     }
 
     def asignacionHorarios(){

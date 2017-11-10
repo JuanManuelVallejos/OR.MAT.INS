@@ -18,10 +18,11 @@ abstract class EditableController {
 
     def index() {
         def finalizoPlazo = parametroSistemaService.finalizoPlazo
+        def finalizoAsignacion = parametroSistemaService.finalizoAsignacion
         render([view: '/editable/grillaEditable', model:
                 [instancias: allInstancias(),
                  titulo    : getTitulo(), accionLink: getLink(),
-                 finalizoPlazo: finalizoPlazo]])
+                 finalizoPlazo: finalizoPlazo, finalizoAsignacion: finalizoAsignacion]])
     }
 
     def SetEditableOActualizar() {

@@ -17,7 +17,7 @@ class CursoController extends EditableController{
         List<Docente> docenteList = docenteService.allDocentes
         List<Division> divisionesOrdenadas = cursoService.getAllDivisiones cursoInstance
 
-        [cursoInstance: cursoInstance, materias:materiaList, docentes: docenteList, divisionesOrdenadas: divisionesOrdenadas, horasCubiertas: false,finalizoPlazo: parametroSistemaService.finalizoPlazo]
+        [cursoInstance: cursoInstance, materias:materiaList, docentes: docenteList, divisionesOrdenadas: divisionesOrdenadas, horasCubiertas: false,finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignacion: parametroSistemaService.finalizoAsignacion]
     }
 
     def save(Curso cursoInstance) {

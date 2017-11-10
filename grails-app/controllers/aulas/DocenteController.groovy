@@ -12,7 +12,7 @@ class DocenteController {
     def parametroSistemaService
 
     def index() {
-        [docenteList: docenteService.getAllDocentes(), seFinalizoPlazo: parametroSistemaService.finalizoPlazo]
+        [docenteList: docenteService.getAllDocentes(), seFinalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignacion: parametroSistemaService.finalizoAsignacion]
     }
 
     def show(Docente docente){
@@ -23,7 +23,8 @@ class DocenteController {
         Docente docenteLogueado = getDocenteLogueado()
         def materiaList = materiaService.allMaterias
 
-        [docenteInstance: docenteLogueado, materias: materiaList.minus(docenteLogueado.materiasQueDicto), materiasDeDocente: docenteLogueado.materiasQueDicto, materiasCount: docenteLogueado.materiasQueDicto.size(), documentInstanceList: docenteLogueado.titulos]
+        [docenteInstance: docenteLogueado, materias: materiaList.minus(docenteLogueado.materiasQueDicto), materiasDeDocente: docenteLogueado.materiasQueDicto, materiasCount: docenteLogueado.materiasQueDicto.size(), documentInstanceList: docenteLogueado.titulos,
+        seFinalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignacion: parametroSistemaService.finalizoAsignacion]
     }
 
     def getDocenteLogueado(){
@@ -33,12 +34,12 @@ class DocenteController {
 
     def create() {
         Docente docente = new Docente()
-        [docenteInstance: docente, seFinalizoPlazo: parametroSistemaService.finalizoPlazo]
+        [docenteInstance: docente, seFinalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignacion: parametroSistemaService.finalizoAsignacion]
     }
 
     def edit() {
         Docente docente = docenteService.getDocenteById(params.id)
-        [docenteInstance: docente]
+        [docenteInstance: docente, finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignacion: parametroSistemaService.finalizoAsignacion]
     }
 
     def save(Docente docenteInstance){

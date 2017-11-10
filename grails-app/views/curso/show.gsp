@@ -127,8 +127,6 @@
             var sobrepasaHoras = horasAAsignarCubiertas + cantidadHorasAAdicionar > totalHorasAsignacion;
             var yaExisteMateria = getExisteMateriaParaDivision(idDivision, valorMateria);
 
-            alert(yaExisteMateria);
-
             if(valorMateria == "null" || valorDocente == "null"){
                 $('#msgErrorMateria'+idDivision).text('Debe seleccionar materia y docente');
                 $('#errorAgregarMateriaDocente'+idDivision).css("display","");
