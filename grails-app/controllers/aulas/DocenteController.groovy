@@ -9,9 +9,10 @@ class DocenteController {
     def materiaService
     def disponibilidadService
     def springSecurityService
+    def parametroSistemaService
 
     def index() {
-        [docenteList: docenteService.getAllDocentes()]
+        [docenteList: docenteService.getAllDocentes(), seFinalizoPlazo: parametroSistemaService.finalizoPlazo]
     }
 
     def show(Docente docente){
@@ -32,7 +33,7 @@ class DocenteController {
 
     def create() {
         Docente docente = new Docente()
-        [docenteInstance: docente]
+        [docenteInstance: docente, seFinalizoPlazo: parametroSistemaService.finalizoPlazo]
     }
 
     def edit() {

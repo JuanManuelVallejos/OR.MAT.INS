@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <g:set var="seFinalizoPlazo" value="${true}" scope="request"/>
     <meta name="layout" content="main" />
 </head>
 

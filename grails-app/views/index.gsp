@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<g:set var="seFinalizoPlazo" value="${false}" scope="request"/>
 		<meta name="layout" content="main"/>
 		<title>Ormatins</title>
 	</head>

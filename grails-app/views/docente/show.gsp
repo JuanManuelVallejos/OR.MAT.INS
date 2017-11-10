@@ -1,5 +1,6 @@
 <html>
     <head>
+        <g:set var="SOMEVARIABLE" value="${true}" scope="request"/>
         <meta name="layout" content="main"/>
         <r:script>
             $('#formNotSubmit').submit(function () {

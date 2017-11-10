@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<g:set var="seFinalizoPlazo" value="${seFinalizoPlazo}" scope="request"/>
 		<meta name="layout" content="main"/>
 		<r:require modules="bootstrap"/>
 	</head>

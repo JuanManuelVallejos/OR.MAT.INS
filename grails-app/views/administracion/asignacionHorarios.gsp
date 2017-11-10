@@ -1,5 +1,6 @@
 <html>
 <head>
+    <g:set var="seFinalizoPlazo" value="${true}" scope="request"/>
     <meta name="layout" content="main">
     <g:javascript src="jquery-drdr.js" />
     <g:javascript src="jqueryui-drdr.js" />

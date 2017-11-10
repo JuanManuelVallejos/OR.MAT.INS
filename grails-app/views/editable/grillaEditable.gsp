@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <g:set var="seFinalizoPlazo" value="${finalizoPlazo}" scope="request"/>
     <r:script>
         function setHiddens(valueA, valueB){
             jQuery('#instanciaId').val(valueA);
