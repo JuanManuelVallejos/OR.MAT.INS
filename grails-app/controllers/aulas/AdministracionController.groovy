@@ -10,6 +10,7 @@ class AdministracionController {
     def cursoService
 
     static tarjetaInstances = new ArrayList<TarjetaAsignacion>()
+    static tarjetaActual = new TarjetaAsignacion()
 
     def index() {
         render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
@@ -67,11 +68,27 @@ class AdministracionController {
         ]}
     }
 
+    def setTarjetaActual(){
+        TarjetaAsignacion tar = tarjetaInstances.getAt(request.JSON.idTarjeta)
+        tarjetaActual = tar
+
+        render(contentType: 'text/json') {[
+                'status': "OK"
+        ]}
+    }
+
+    def docentePuedeEnHorario(){
+        def puede = asignacionService.docenteTieneMateriaAsignadaEnDiaYHora(tarjetaActual.docente,(request.JSON.dia as DiaSemana),request.JSON.hora)
+        render(contentType: 'text/json') {[
+                'result': puede as boolean,
+                'status': result ? "OK" : "Nothing present"
+        ]}
+    }
+
     def reiniciarTarjeta(){
         TarjetaAsignacion tar = tarjetaInstances.getAt(request.JSON.idTarjeta)
         tar.hora = null
         tar.dia = null
-
         render(contentType: 'text/json') {[
                 'status': "OK"
         ]}

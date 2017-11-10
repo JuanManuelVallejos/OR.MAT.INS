@@ -10,7 +10,33 @@
     <script>
         $( function() {
             $("i[id^='dragg']").draggable({
-                revert: 'invalid'
+                revert: 'invalid',
+                drag: function(event, ui){
+                    var idHTMLTarjeta = ui.helper.context.id;
+                    var idTarjeta = parseInt(idHTMLTarjeta.split('dragg')[1]);
+                    var URL='${createLink(controller: 'administracion', action: 'setTarjetaActual')}';
+                    $.ajax({
+                        url: URL,
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({ idTarjeta:  idTarjeta}),
+                        cache: false,
+                        async: true,
+                        success:[
+                            function(data) {
+                            }
+                        ]
+                })},
+                stop: function (event, ui) {
+                    var idHTMLSplitDrop = ui.helper.context.parentElement.id.split('dropp');
+                    var dia = idHTMLSplitDrop[1];
+                    var hora = idHTMLSplitDrop[2];
+                    var idTarjeta = this.id.split('dragg')[1];
+                    if(dia != "Container")
+                        $('#alertaDocenteEnHorario').css('display','none');
+                    else
+                        $('#alertaDocenteEnHorario').css('display','');
+                }
             });
             $("ul[id^='dropp']").droppable({
                 drop: function (event, ui) {
@@ -60,6 +86,7 @@
                         success:[
                             function(data) {
                                 mantenerTamañoContenedor();
+                                $('#alertaDocenteEnHorario').css('display','none');
                                 if($("."+idHTMLMateriaPorDocente).length == 0) {
                                     var widthInPixels = document.getElementById(idDroppable.id).clientWidth;
                                     var heightInPixels = document.getElementById(idDroppable.id).clientHeight;
@@ -81,7 +108,28 @@
                     })
                 },
                 accept: function() {
-                    return $('#'+this.id +' > i').length < 1;
+                    var URL='${createLink(controller: 'administracion', action: 'docentePuedeEnHorario')}';
+                    var dia = this.id.split('dropp')[1];
+                    var hora = parseInt(this.id.split('dropp')[2]);
+                    var puedeDocenteEnHoraYDia = true;
+                    $.ajax({
+                        url: URL,
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({dia: dia, hora: hora}),
+                        cache: false,
+                        async: false,
+                        success: [
+                            function(data) {
+                                puedeDocenteEnHoraYDia = data.result
+                            }
+                        ]
+                    });
+                    if(puedeDocenteEnHoraYDia){
+                        return $('#'+this.id +' > i').length < 1;
+                    }else{
+                        return false;
+                    }
                 }
             });
         });
@@ -179,6 +227,12 @@
                             </table>
                         </div>
                         <br />
+                        <div id="alertaDocenteEnHorario" style="display: none">
+                            <div class="alert alert-warning" role="alert">
+                                <p id="msgAlerta" style="font-size: 100%">El docente ya tiene una materia asignada para ese horario.</p>
+                            </div>
+                            <br />
+                        </div>
                         <div id="errorGrillaIncompleta" style="display: none">
                             <div class="alert alert-warning" role="alert">
                                 <p id="msgErrorMateria" style="font-size: 100%">Sólo se podrá finalizar la asignación si la grilla de horarios está completa</p>

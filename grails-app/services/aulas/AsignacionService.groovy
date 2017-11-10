@@ -3,6 +3,10 @@ import DTOs.TarjetaAsignacion
 
 class AsignacionService {
 
+    def getAllAsignaciones(){
+        Asignacion.all
+    }
+
     def crearAsignacion(int hora, Division division, DiaSemana dia){
         Asignacion asignacion = new Asignacion(hora: hora, division: division, dia: dia)
         asignacion.save flush:true
@@ -17,4 +21,12 @@ class AsignacionService {
             asignacion.save flush: true
         }
     }
+
+    def docenteTieneMateriaAsignadaEnDiaYHora(Docente docente, DiaSemana dia, int hora){
+        def noPuede = allAsignaciones.findAll {
+            it.docenteId == docente.id && it.dia == dia && it.hora == hora
+        }.size() > 0
+        return !noPuede
+    }
+
 }
