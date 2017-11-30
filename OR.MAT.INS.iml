@@ -17,6 +17,7 @@
         <datasource-map>
           <unit-entry name="Gorm" />
           <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="sessionFactory" />
           <unit-entry name="target:work:plugins:hibernate-3.6.10.16:src:java:hibernate.cfg.xml" />
         </datasource-map>
         <naming-strategy-map />

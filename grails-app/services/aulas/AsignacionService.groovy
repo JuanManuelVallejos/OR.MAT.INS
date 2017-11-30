@@ -14,6 +14,7 @@ class AsignacionService {
     }
 
     def asignarTarjetas(Division division, List<TarjetaAsignacion> tarjetasAsignacion){
+        def a = limpiarAsignacionesDeDivision(division)
         for (TarjetaAsignacion tarjeta in tarjetasAsignacion){
             Asignacion asignacion = Asignacion.findByHoraAndDiaAndDivision(tarjeta.hora, tarjeta.dia, division)
             asignacion.docente = tarjeta.docente
@@ -22,9 +23,17 @@ class AsignacionService {
         }
     }
 
-    def docenteTieneMateriaAsignadaEnDiaYHora(Docente docente, DiaSemana dia, int hora){
+    def limpiarAsignacionesDeDivision(Division division){
+        for(Asignacion asignacion in Asignacion.findAllByDivision(division)){
+            asignacion.docente = null
+            asignacion.materia = null
+            asignacion.save flush: true
+        }
+    }
+
+    def docenteTieneMateriaAsignadaEnDiaYHora(Division division, Docente docente, DiaSemana dia, int hora){
         def noPuede = allAsignaciones.findAll {
-            it.docenteId == docente.id && it.dia == dia && it.hora == hora
+            it.docenteId == docente.id && it.dia == dia && it.hora == hora && it.division != division
         }.size() > 0
         return !noPuede
     }

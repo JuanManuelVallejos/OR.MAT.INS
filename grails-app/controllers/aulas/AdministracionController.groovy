@@ -9,8 +9,9 @@ class AdministracionController {
     def asignacionService
     def cursoService
 
-    static tarjetaInstances = new ArrayList<TarjetaAsignacion>()
-    static tarjetaActual = new TarjetaAsignacion()
+    static List<TarjetaAsignacion> tarjetasAsignadas = new ArrayList<TarjetaAsignacion>()
+    static List<TarjetaAsignacion> tarjetasSinAsignar = new ArrayList<TarjetaAsignacion>()
+    static TarjetaAsignacion tarjetaActual = new TarjetaAsignacion()
 
     def index() {
         render(view: 'index', model:[finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignaciones: parametroSistemaService.finalizoAsignacion])
@@ -54,24 +55,33 @@ class AdministracionController {
 
     def asignacionHorarios(){
         Division division = divisionService.getDivisionById(params.id)
-        tarjetaInstances = division.tarjetasAsignacion
-        render([view:'asignacionHorarios', model: [divisionInstance: division, tarjetas: tarjetaInstances]])
+        tarjetasAsignadas = division.tarjetasAsignadas
+        tarjetasSinAsignar= division.tarjetasSinAsignar
+
+        render([view:'asignacionHorarios', model: [divisionInstance: division,tarjetas: tarjetasSinAsignar, tarjetasAsignadas: tarjetasAsignadas]])
+    }
+
+    def getTarjetaById(id){
+        def tarjeta = tarjetasAsignadas.find {it.id == id}
+        if(tarjeta == null)
+            tarjeta = tarjetasSinAsignar.find {it.id == id}
+        return tarjeta
     }
 
     def setDroppableValue(){
-        TarjetaAsignacion tar = tarjetaInstances.getAt(request.JSON.idTarjeta)
+        TarjetaAsignacion tar = getTarjetaById(request.JSON.idTarjeta)
         tar.hora = request.JSON.hora
         tar.dia = (request.JSON.dia as DiaSemana)
-
+        tarjetasSinAsignar.remove(tar)
+        tarjetasAsignadas.remove(tar)
+        tarjetasAsignadas.add(tar)
         render(contentType: 'text/json') {[
                 'status': "OK"
         ]}
     }
 
     def setTarjetaActual(){
-        TarjetaAsignacion tar = tarjetaInstances.getAt(request.JSON.idTarjeta)
-        tarjetaActual = tar
-
+        tarjetaActual = getTarjetaById(request.JSON.idTarjeta)
         render(contentType: 'text/json') {[
                 'status': "OK"
         ]}
@@ -79,8 +89,10 @@ class AdministracionController {
 
     def docentePuedeEnHorario(){
         def puede = true
-        if(tarjetaActual.docente)
-            puede = asignacionService.docenteTieneMateriaAsignadaEnDiaYHora(tarjetaActual.docente,(request.JSON.dia as DiaSemana),request.JSON.hora)
+        Division division = divisionService.getDivisionById(request.JSON.divisionID)
+        if(tarjetaActual && tarjetaActual.docente){
+            puede = asignacionService.docenteTieneMateriaAsignadaEnDiaYHora(division, tarjetaActual.docente,(request.JSON.dia as DiaSemana),request.JSON.hora)
+        }
         render(contentType: 'text/json') {[
                 'result': puede as boolean,
                 'status': result ? "OK" : "Nothing present"
@@ -88,39 +100,25 @@ class AdministracionController {
     }
 
     def reiniciarTarjeta(){
-        TarjetaAsignacion tar = tarjetaInstances.getAt(request.JSON.idTarjeta)
+        TarjetaAsignacion tar = getTarjetaById(request.JSON.idTarjeta)
         tar.hora = null
         tar.dia = null
+        tarjetasAsignadas.remove(tar)
+        tarjetasSinAsignar.add(tar)
         render(contentType: 'text/json') {[
                 'status': "OK"
         ]}
     }
 
-    def getPuedeFinalizar(){
-        return tarjetaInstances.findAll { it.hora == null}.empty
-    }
-
-    def getPuedeFinalizarForJS(){
-        def puede = puedeFinalizar
-        render(contentType: 'text/json') {[
-                'result': puede as String,
-                'status': result ? "OK" : "Nothing present"
-        ]}
-    }
-
-    def finalizarAsignacionDivision(){
+    def guardarAsignacionesDivision(){
         Division division = divisionService.getDivisionById(params.divisionID)
-        if(puedeFinalizar){
-            asignacionService.asignarTarjetas(division, tarjetaInstances)
-            render([view:'resultadoAsignacionDivision', model: [divisionInstance: division]])
-        }
-        else{
-            render([view: 'asignacionHorarios', model: [divisionInstance: division, tarjetas: tarjetaInstances]])
-        }
+        asignacionService.asignarTarjetas(division, tarjetasAsignadas)
+        render([view: 'asignacionHorarios', model: [divisionInstance: division, tarjetas: tarjetasSinAsignar, tarjetasAsignadas: tarjetasAsignadas]])
     }
 
     def viewResultadosAsignacion(){
         Division division = divisionService.getDivisionById(params.id)
-        render([view:'resultadoAsignacionDivision', model: [divisionInstance: division]])
+        render([view:'resultadoAsignacionDivision', model: [divisionInstance: division, finalizoPlazo: parametroSistemaService.finalizoPlazo, finalizoAsignacion: parametroSistemaService.finalizoAsignacion]])
     }
+
 }

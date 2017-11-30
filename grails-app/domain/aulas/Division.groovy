@@ -55,6 +55,10 @@ class Division {
         asignaciones.max {it.hora}?.hora
     }
 
+    def getCantidadAsignacionesHechasDe(MateriaPorDocente matXDoc){
+        asignaciones.findAll {it.docente == matXDoc.docente && it.materia == matXDoc.materia}.size()
+    }
+
     def getTarjetasAsignacion(){
         def idTarjeta = 0
         List<TarjetaAsignacion> tarjetas = new ArrayList<TarjetaAsignacion>()
@@ -76,38 +80,36 @@ class Division {
     def getTarjetasSinAsignar(){
         def idTarjeta = 0
         List<TarjetaAsignacion> tarjetas = new ArrayList<TarjetaAsignacion>()
-        for(MateriaPorDocente matXDoc in materiasPorDocente){
-            for (i in 1..matXDoc.horasACubrir) {
-                if(!asignaciones.find {it.docente == matXDoc.docente}){
-                    TarjetaAsignacion tarjeta = new TarjetaAsignacion()
-                    tarjeta.materia = matXDoc.materia
-                    tarjeta.docente = matXDoc.docente
-                    tarjeta.idMateriaPorDocente = matXDoc.id
-                    tarjeta.id = idTarjeta
-                    idTarjeta++
-                    tarjetas.add(tarjeta)
-                }
-
+        for (MateriaPorDocente matXDoc in materiasPorDocente){
+            (matXDoc.horasACubrir - getCantidadAsignacionesHechasDe(matXDoc)).times{
+                // TODO: Unificar con el metodo
+                TarjetaAsignacion tarjeta = new TarjetaAsignacion()
+                tarjeta.materia = matXDoc.materia
+                tarjeta.docente = matXDoc.docente
+                tarjeta.idMateriaPorDocente = matXDoc.id
+                tarjeta.disponibilidad = matXDoc.docente.disponibilidadParaTarjeta
+                tarjeta.id = idTarjeta
+                idTarjeta++
+                tarjetas.add(tarjeta)
             }
         }
         return tarjetas
     }
 
     def getTarjetasAsignadas(){
-        def idTarjeta = 0
+        def idTarjeta = 1000
         List<TarjetaAsignacion> tarjetas = new ArrayList<TarjetaAsignacion>()
-        for(MateriaPorDocente matXDoc in materiasPorDocente){
-            for (i in 1..matXDoc.horasACubrir) {
-                if(asignaciones.find {it.docente == matXDoc.docente}){
-                    TarjetaAsignacion tarjeta = new TarjetaAsignacion()
-                    tarjeta.materia = matXDoc.materia
-                    tarjeta.docente = matXDoc.docente
-                    tarjeta.idMateriaPorDocente = matXDoc.id
-                    tarjeta.id = idTarjeta
-                    idTarjeta++
-                    tarjetas.add(tarjeta)
-                }
-
+        for(Asignacion asignacion in asignaciones){
+            if(asignacion.docente != null){
+                TarjetaAsignacion tarjeta = new TarjetaAsignacion()
+                tarjeta.materia = asignacion.materia
+                tarjeta.docente = asignacion.docente
+                tarjeta.hora = asignacion.hora
+                tarjeta.dia = asignacion.dia
+                tarjeta.disponibilidad = asignacion.docente.getDisponibilidadParaTarjeta()
+                tarjeta.id = idTarjeta
+                idTarjeta++
+                tarjetas.add(tarjeta)
             }
         }
         return tarjetas
